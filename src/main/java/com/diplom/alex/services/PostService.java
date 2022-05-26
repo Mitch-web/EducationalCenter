@@ -1,0 +1,14 @@
+package com.diplom.alex.services;
+
+import com.diplom.alex.model.PostModel;
+
+import java.util.List;
+
+public interface PostService {
+
+    PostModel getPostById(int id);
+    List<PostModel> getPostsByTitle(String title);
+    List<PostModel> getPosts();
+    List<PostModel> getPostsByCourse(String courseName);
+    boolean addNewPost(PostModel post, int courseId);
+}

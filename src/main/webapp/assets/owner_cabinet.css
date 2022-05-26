@@ -1,0 +1,76 @@
+body{
+	margin: 0;
+	padding: 0;
+}
+p{
+	margin: 0;
+	padding: 0;
+}
+.add_new_employee_popup{
+	display: none;
+	opacity: 0;
+	width: 27%;
+	height: max-content;
+	overflow: auto;
+	margin: auto;
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	background-color: #ccc;
+	border-radius: 30px;
+	filter: drop-shadow(2px 4px 11px black);
+	padding: 4%;
+}
+.add_new_employee_popup .form{
+	display: flex;
+	flex-direction: column;
+}
+.close_employee_add_popup{
+	position: absolute;
+    top: 5%;
+    right: 5%;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: 700;
+    font-family: cursive;
+}
+.add_new_employee_popup input[type="text"]{
+	margin-top: 10px;
+    height: 22px;
+    border: 0;
+    border-radius: 8px;
+    outline: none;
+    padding-left: 10px;
+}
+.add_new_employee_popup label{
+	margin-top: 10px;
+    font-size: 16px;
+    font-family: cursive;
+}
+#choose_employee_type{
+	width: 50%;
+    margin: 0 auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    height: 30px;
+    border: 0;
+    outline: none;
+    border-radius: 8px;
+    font-family: cursive;
+    font-weight: 700;
+    font-size: 14px;
+    display: flex;
+}
+.add_new_employee_popup input[type="submit"]{
+	border-radius: 100px;
+    border: 0;
+    width: 50%;
+    margin: 0 auto;
+    font-size: 14px;
+    padding: 8px 10px;
+    cursor: pointer;
+    font-family: cursive;
+    font-weight: 700;
+}

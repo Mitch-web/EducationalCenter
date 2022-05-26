@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="
+		http://www.springframework.org/schema/beans
+    	http://www.springframework.org/schema/beans/spring-beans.xsd
+    	http://www.springframework.org/schema/context
+    	http://www.springframework.org/schema/context/spring-context.xsd
+    	http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <context:component-scan base-package="com.diplom.alex"/>
+
+    <mvc:annotation-driven/>
+    <mvc:resources mapping="/assets/**" location="/assets/"/>
+
+    <bean id="viewProvider" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/views/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+
+    <bean id="dataSource"
+          class="org.apache.commons.dbcp.BasicDataSource"
+          destroy-method="close">
+        <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://176.114.3.205:3306/education?serverTimezone=UTC"/>
+        <property name="username" value="root1"/>
+        <property name="password" value="rootROOT1"/>
+    </bean>
+
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <constructor-arg name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <!--===DAO================================-->
+    <bean id="userDAO" class="com.diplom.alex.dao.impl.UserDAOImpl"/>
+
+    <bean id="roleDAO" class="com.diplom.alex.dao.impl.RoleDAOImpl"/>
+
+    <bean id="postDAO" class="com.diplom.alex.dao.impl.PostDAOImpl"/>
+
+    <bean id="courseDAO" class="com.diplom.alex.dao.impl.CourseDAOImpl"/>
+
+    <!--===SERVICES===========================-->
+    <bean id="userService" class="com.diplom.alex.services.impl.UserServiceImpl">
+        <constructor-arg name="userDAO" ref="userDAO"/>
+    </bean>
+
+    <bean id="roleService" class="com.diplom.alex.services.impl.RoleServiceImpl">
+        <constructor-arg name="roleDAO" ref="roleDAO"/>
+    </bean>
+
+    <bean id="postService" class="com.diplom.alex.services.impl.PostServiceImpl">
+        <constructor-arg name="postDAO" ref="postDAO"/>
+    </bean>
+
+    <bean id="courseService" class="com.diplom.alex.services.impl.CourseServiceImpl">
+        <constructor-arg name="courseDAO" ref="courseDAO"/>
+    </bean>
+
+</beans>
