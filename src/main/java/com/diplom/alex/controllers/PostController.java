@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.servlet.http.HttpServletRequest;
 
 @Controller
-@RequestMapping("/teacher/courses")
+@RequestMapping(value = "/teacher/courses", produces = "text/html; charset=UTF-8")
 public class PostController {
 
     @Autowired
@@ -20,19 +20,22 @@ public class PostController {
     @Autowired
     private CourseService courseService;
 
-    @PostMapping("/*/add-post")
-    public ResponseEntity<Object> addNewPost(HttpServletRequest request, String title, String subtitle) {
+    @PostMapping(value = "/*/add-post", produces = "text/plain;charset=UTF-8")
+    public ResponseEntity<Object> addNewPost(HttpServletRequest request, String title,
+                                             String subtitle, String deadline) {
         String[] params = request.getRequestURI().split("/");
         String courseName = courseService.getCourseNameByParam(params[3]);
-        return postService.addNewPost(createAndPopulatePost(title, subtitle), courseService.getByName(courseName).getId())
+        return postService.addNewPost(createAndPopulatePost(title, subtitle, deadline),
+                courseService.getByName(courseName).getId())
                 ? ResponseEntity.ok().build()
                 : ResponseEntity.badRequest().body("Wrong");
     }
 
-    private PostModel createAndPopulatePost(String title, String subtitle) {
+    private PostModel createAndPopulatePost(String title, String subtitle, String deadline) {
         PostModel postModel = new PostModel();
         postModel.setTitle(title);
         postModel.setSubtitle(subtitle);
+        postModel.setDeadline(deadline);
         return  postModel;
     }
 }

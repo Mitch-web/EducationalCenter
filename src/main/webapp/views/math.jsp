@@ -26,22 +26,6 @@
                     <h3 class="course_item_title">Title</h3>
                     <p class="course_item_subtitle">Sub title uihihiuhihiuhiohiogouyguyfiutfuygogoihiuhiguyuygogiouhiuhiguyfuit</p>
                 </a>
-                <a href="#" class="course_list_item">
-                    <h3 class="course_item_title">Title</h3>
-                    <p class="course_item_subtitle">Sub title uihihiuhihiuhiohiogouyguyfiutfuygogoihiuhiguyuygogiouhiuhiguyfuit</p>
-                </a>
-                <a href="#" class="course_list_item">
-                    <h3 class="course_item_title">Title</h3>
-                    <p class="course_item_subtitle">Sub title uihihiuhihiuhiohiogouyguyfiutfuygogoihiuhiguyuygogiouhiuhiguyfuit</p>
-                </a>
-                <a href="#" class="course_list_item">
-                    <h3 class="course_item_title">Title</h3>
-                    <p class="course_item_subtitle">Sub title uihihiuhihiuhiohiogouyguyfiutfuygogoihiuhiguyuygogiouhiuhiguyfuit</p>
-                </a>
-                <a href="#" class="course_list_item">
-                    <h3 class="course_item_title">Title</h3>
-                    <p class="course_item_subtitle">Sub title uihihiuhihiuhiohiogouyguyfiutfuygogoihiuhiguyuygogiouhiuhiguyfuit</p>
-                </a>
             </div>
             <a href="#" class="add_event_container">
                 <p class="add_event_text">Додати завдання</p>
@@ -53,7 +37,8 @@
                 </div>
             </a>
         </main>
-    <script src="/assets/script.js"></script>
+        <%@ include file="jspf/add_post.jspf" %>
+        <script src="/assets/script.js"></script>
 </body>
 
 </html>

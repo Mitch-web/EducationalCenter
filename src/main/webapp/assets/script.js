@@ -20,53 +20,47 @@
         add_task_cont.style.display = "none";
     }
 
-    let add_event_container = document.querySelector(".add_event_container");
-    add_event_container.addEventListener("click", (e)=>{
-    console.log('dick')
+    const add_event_container = document.querySelector('.add_event_container');
+    const popup_window = document.querySelector('.popup_window');
+    const close = document.querySelector('.close');
+    const send_project_form = popup_window.querySelector('form');
+
+    add_event_container.addEventListener('click', () => {
+        popup_window.classList.add('active');
+    });
+    close.addEventListener('click', () => {
+        popup_window.classList.remove('active');
+    });
+
+    let title_inp = send_project_form.querySelector('input[name="title-inp"]');
+    let description_inp = send_project_form.querySelector('input[name="description-inp"]');
+    let deadline_inp = send_project_form.querySelector('input[name="deadline-inp"]');
+
+    send_project_form.addEventListener('submit', function(e) {
         e.preventDefault();
-       /* var settings = {
-        			"url": `${location.origin + location.pathname}/add`,
-        			"method": "POST",
-        			"timeout": 0,
-        			"headers": {
-        				"Content-Type": "application/x-www-form-urlencoded"
-        			},
-        			"data": {
-        				"login": `Заголовок`,
-        				"password": `Описание`
-        			},
-        			success: function(response) {
-        			    window.location.reload();
-        			},
-        			error: function(error){
-        		        console.log(error);
-        			}
-        		}
-        		$.ajax(settings).done(function (response) {
-                			console.log(response);
-                			console.log(window.location.origin + response);
-                		});*/
+        if (title_inp.value != 0 && description_inp.value != 0) {
+            var myHeaders = new Headers();
+            myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
 
+            var urlencoded = new URLSearchParams();
+            urlencoded.append("title", `${title_inp.value}`);
+            urlencoded.append("subtitle", `${description_inp.value}`);
+            urlencoded.append("deadline", `${deadline_inp.value}`);
 
-        var myHeaders = new Headers();
-        myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
+            var requestOptions = {
+                method: 'POST',
+                headers: myHeaders,
+                body: urlencoded,
+                redirect: 'follow'
+            };
 
-        var urlencoded = new URLSearchParams();
-        urlencoded.append("title", "lala");
-        urlencoded.append("subtitle", "123123");
-
-        var requestOptions = {
-          method: 'POST',
-          headers: myHeaders,
-          body: urlencoded,
-          redirect: 'follow'
-        };
-
-        fetch("http://localhost:8080/teacher/courses/math/add-post", requestOptions)
-          .then(response => response.text())
-          .then(result => console.log(result))
-          .catch(error => console.log('error', error));
-
-    })
-
-})();
+            fetch("http://localhost:8080/teacher/courses/math/add-post", requestOptions)
+                .then(response => response.text())
+                .then(result => console.log(result))
+                .catch(error => console.log('error', error));
+        } else {
+            alert('Введи хоть шо нибудь, еблан');
+        }
+    });
+})
+();

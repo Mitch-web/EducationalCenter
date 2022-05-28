@@ -11,5 +11,6 @@ public interface PostDAO {
     List<PostModel> getPostsByTitle(String title);
     List<PostModel> getPosts();
     List<PostModel> getPostsByCourse(String courseName);
+    List<PostModel> getPostsByDeadline(String deadline);
     boolean addNewPost(PostModel post, int courseId);
 }

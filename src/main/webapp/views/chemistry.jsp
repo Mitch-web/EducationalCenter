@@ -63,7 +63,8 @@
                 </div>
             </a>
         </main>
-        <script src="../assets/script.js"></script>
+        <%@ include file="jspf/add_post.jspf" %>
+        <script src="/assets/script.js"></script>
 </body>
 
 </html>

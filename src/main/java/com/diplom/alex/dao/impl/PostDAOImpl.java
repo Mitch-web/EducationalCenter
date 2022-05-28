@@ -49,8 +49,14 @@ public class PostDAOImpl implements PostDAO {
     }
 
     @Override
+    public List<PostModel> getPostsByDeadline(String deadline) {
+        return jdbcTemplate.query(String.format("SELECT * FROM %s where deadline LIKE '%s'", POST_TABLE, deadline),
+                new BeanPropertyRowMapper<>(PostModel.class));
+    }
+
+    @Override
     public boolean addNewPost(PostModel post, int courseId) {
-        final String INSERT_POST_SQL = "INSERT INTO " + POST_TABLE + " (title, subtitle) VALUES (?, ?)";
+        final String INSERT_POST_SQL = "INSERT INTO " + POST_TABLE + " (title, subtitle, deadline) VALUES (?, ?, ?)";
 
         KeyHolder keyHolder = new GeneratedKeyHolder();
         jdbcTemplate.update(
@@ -59,6 +65,7 @@ public class PostDAOImpl implements PostDAO {
                             connection.prepareStatement(INSERT_POST_SQL, new String[] {"id"});
                     ps.setString(1, post.getTitle());
                     ps.setString(2, post.getSubtitle());
+                    ps.setString(3, post.getDeadline());
                     return ps;
                 },
                 keyHolder);
@@ -66,6 +73,8 @@ public class PostDAOImpl implements PostDAO {
         jdbcTemplate.update("INSERT INTO " + COURSE_HAVE_POSTS_TABLE + " VALUES(?, ?)", courseId, keyHolder.getKey());
         return true;
     }
+
+
 
     private PostModel extractPost(String query, Object[] params) {
         return jdbcTemplate.query(query, new BeanPropertyRowMapper<>(PostModel.class), params)

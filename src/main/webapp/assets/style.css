@@ -258,3 +258,18 @@ aside .courses_container a:hover svg {
   height: 11px;
   width: 1px;
 }
+
+.popup_window {
+    position: absolute;
+    display: none;
+    top: 50%;
+    left: 50%;
+    width: 90vw;
+    height: 90vh;
+    background-color: #fff;
+    border-radius: 20px;
+}
+
+.popup_window.active{
+    display: block;
+}

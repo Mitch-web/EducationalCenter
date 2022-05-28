@@ -82,6 +82,7 @@ CREATE TABLE IF NOT EXISTS posts
     id int auto_increment,
     title varchar(30) NOT NULL,
     subtitle varchar(50) NOT NULL,
+    deadline varchar(20),
     PRIMARY KEY (id)
 );
 

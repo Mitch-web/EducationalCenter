@@ -8,5 +8,6 @@ public class PostModel {
     private int id;
     private String title;
     private String subtitle;
+    private String deadline;
 
 }
