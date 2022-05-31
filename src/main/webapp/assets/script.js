@@ -54,7 +54,7 @@
                 redirect: 'follow'
             };
 
-            fetch("http://localhost:8080/teacher/courses/math/add-post", requestOptions)
+            fetch("https://educationcenter1.herokuapp.com/teacher/courses/math/add-post", requestOptions)
                 .then(response => response.text())
                 .then(result => console.log(result))
                 .catch(error => console.log('error', error));
