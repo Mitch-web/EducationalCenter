@@ -33,7 +33,7 @@
     });
 
     let title_inp = send_project_form.querySelector('input[name="title-inp"]');
-    let description_inp = send_project_form.querySelector('input[name="description-inp"]');
+    let description_inp = send_project_form.querySelector('textarea[name="description-inp"]');
     let deadline_inp = send_project_form.querySelector('input[name="deadline-inp"]');
 
     send_project_form.addEventListener('submit', function(e) {
@@ -54,7 +54,7 @@
                 redirect: 'follow'
             };
 
-            fetch("https://educationcenter1.herokuapp.com/teacher/courses/math/add-post", requestOptions)
+            fetch("http://localhost:8080/teacher/courses/math/add-post", requestOptions)
                 .then(response => response.text())
                 .then(result => console.log(result))
                 .catch(error => console.log('error', error));
