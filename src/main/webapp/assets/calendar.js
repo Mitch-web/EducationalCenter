@@ -40,7 +40,7 @@ async function get_posts() {
 
     var posts;
 
-    return fetch("http://localhost:8080/teacher/posts", requestOptions)
+    return fetch("https://educationcenter1.herokuapp.com/teacher/posts", requestOptions)
       .then(response => response.text())
       .then((result) => {
           console.log(JSON.parse(result));

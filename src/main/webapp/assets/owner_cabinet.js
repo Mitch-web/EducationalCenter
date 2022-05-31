@@ -20,7 +20,7 @@ function add_new_empl() {
 			alert('Заполните все поля!')
 		} else {
 			var settings = {
-				"url": `${settings_site.url}/registration`,
+				"url": `https://educationcenter1.herokuapp.com/registration`,
 				"method": "POST",
 				"timeout": 0,
 				"headers": {
