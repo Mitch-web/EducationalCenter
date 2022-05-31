@@ -1,1 +1,1 @@
-web: java $JAVA_OPTS -jar target/dependency/EducationCenter.jar --port $PORT target/*.war
+web: java $JAVA_OPTS -jar target/coffee-station-mvc.jar --port $PORT target/*.war
