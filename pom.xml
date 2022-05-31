@@ -7,6 +7,7 @@
     <groupId>com.diplom.alex</groupId>
     <artifactId>EducationalCenter</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>war</packaging>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
@@ -152,7 +153,7 @@
                 <artifactId>heroku-maven-plugin</artifactId>
                 <version>3.0.3</version>
                 <configuration>
-                    <appName>EducationalCenter</appName>
+                    <appName>educationcenter1</appName>
                 </configuration>
             </plugin>
         </plugins>
