@@ -1,1 +1,1 @@
-web: java -Dserver.port=$PORT -jar ./target/coffee-station-mvc.jar
+web: java $JAVA_OPTS -jar target/dependency/coffee-station-mvc.jar --port $PORT target/*.war
