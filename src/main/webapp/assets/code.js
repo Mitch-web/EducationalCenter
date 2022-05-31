@@ -5,7 +5,8 @@ function sendAuthData() {
   let error_message = document.querySelector('.error_message');
 	if(login_inp.value!='' && pass_inp.value!=''){
 		var settings = {
-			"url": `${settings_site.url}/login`,
+			//"url": `${settings_site.url}/login`,
+			"url": `https://educationcenter1.herokuapp.com/login`,
 			"method": "POST",
 			"timeout": 0,
 			"headers": {
