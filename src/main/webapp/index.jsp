@@ -24,15 +24,31 @@
 					<input type="password" class="pass_inp" placeholder="Ваш пароль" name="password">
 					<div onclick="sendAuthData()" class="post_button">Вход</div>
 				</div>
-				<input name="auth_remember" type="checkbox" class="auth_remember_inp">
+				<input name="auth_remember" type="checkbox" class="auth_remember_inp"/>
 				<label for="auth_remember" class="auth_remember">Запомнить меня на этом компьютере</label><br>
 			</form:form>
 			<a href="#" class="forget_pass">Забыли пароль?</a>
 		</div>
 	</div>
+	<input class="add_new_employee" type="submit" value="Зарегистрироваться"/>
+        <div class="add_new_employee_popup">
+            <form:form id="reg" class="form" name="newUser">
+                <p class="close_employee_add_popup">х</p>
+                <label for="employee_name">Введите имя:</label>
+                <input type="text" name="employee_name" class="employee_name"/>
+                <label for="employee_name">Введите фамилию:</label>
+                <input type="text" name="employee_lastname" class="employee_lastname"/>
+                <label for="login">Придумайте логин:</label>
+                <input type="text" name="login" class="login"/>
+                <label for="password">Придумайте пароль:</label>
+                <input type="text" name="password" class="password"/>
+                <input class="add_new_employee_but" type="submit" value="Зарегистрироваться"/>
+            </form:form>
+        </div>
 	<p class="error_message"></p>
 	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="/assets/settings.js"></script>
     <script src="/assets/code.js"></script>
+    <script src="/assets/owner_cabinet.js"></script>
 </body>
 </html>

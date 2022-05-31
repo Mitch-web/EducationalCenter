@@ -42,6 +42,11 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
+    public List<PostModel> getPostsByDate() {
+        return postDAO.getPostsByDate();
+    }
+
+    @Override
     public boolean addNewPost(PostModel post, int courseId) {
         return postDAO.addNewPost(post, courseId);
     }

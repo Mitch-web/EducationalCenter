@@ -11,5 +11,6 @@ public interface PostService {
     List<PostModel> getPosts();
     List<PostModel> getPostsByCourse(String courseName);
     List<PostModel> getPostsByDeadline(String deadline);
+    List<PostModel> getPostsByDate();
     boolean addNewPost(PostModel post, int courseId);
 }

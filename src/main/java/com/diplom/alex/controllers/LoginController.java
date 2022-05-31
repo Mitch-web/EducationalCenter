@@ -3,6 +3,7 @@ package com.diplom.alex.controllers;
 import com.diplom.alex.model.LoginForm;
 import com.diplom.alex.model.RoleModel;
 import com.diplom.alex.model.UserModel;
+import com.diplom.alex.services.RoleService;
 import com.diplom.alex.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -24,6 +25,8 @@ public class LoginController {
 
     @Autowired
     private UserService userService;
+    @Autowired
+    private RoleService roleService;
 
     @PostMapping("/login")
     public @ResponseBody ResponseEntity<Object> login(@ModelAttribute("loginForm") @Valid LoginForm loginForm,
@@ -43,11 +46,17 @@ public class LoginController {
         return ResponseEntity.ok(String.format("/%s%s", RoleModel.getRole(userModel).getName(), CABINET));
     }
 
+    @PostMapping("/registration")
+    public ResponseEntity<Object> addUser(@ModelAttribute("newUser") UserModel user) {
+        user.setRoleId(roleService.getIdByName("student"));
+        userService.createUser(user);
+        return ResponseEntity.ok(MAIN_PAGE);
+    }
+
     @GetMapping("/logout")
     public ModelAndView logout(HttpSession session) {
         ModelAndView maw = new ModelAndView("");
         session.removeAttribute("user");
         return maw;
     }
-
 }

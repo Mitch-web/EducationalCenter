@@ -8,6 +8,8 @@ import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 
 import java.sql.PreparedStatement;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -51,6 +53,14 @@ public class PostDAOImpl implements PostDAO {
     @Override
     public List<PostModel> getPostsByDeadline(String deadline) {
         return jdbcTemplate.query(String.format("SELECT * FROM %s where deadline LIKE '%s'", POST_TABLE, deadline),
+                new BeanPropertyRowMapper<>(PostModel.class));
+    }
+
+    @Override
+    public List<PostModel> getPostsByDate() {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String currentDate = sdf.format(new Date());
+        return jdbcTemplate.query(String.format("SELECT * FROM %s WHERE DATE(deadline) >= DATE('%s')", POST_TABLE, currentDate),
                 new BeanPropertyRowMapper<>(PostModel.class));
     }
 

@@ -19,6 +19,7 @@ public class ApplicationConstants {
     public static final String MATH_PAGE = "math";
     public static final String PHYSIC_PAGE = "physic";
     public static final String CHEMISTRY_PAGE = "chemistry";
+    public static final String CALENDAR_PAGE = "calendar";
 
     //===URL ========================================
     public static final String CABINET = "/cabinet";
