@@ -19,8 +19,11 @@ function add_new_empl() {
 		if(employee_name.value == '' || employee_lastname.value == '' || employee_login.value == '' || employee_password.value == ''){
 			alert('Заполните все поля!')
 		} else {
+		    var addPostUrl = window.location.href;
+            addPostUrl = addPostUrl.replace("#", "") + "/registration";
+
 			var settings = {
-				"url": `${settings_site.url}/registration`,
+				"url": addPostUrl,
 				"method": "POST",
 				"timeout": 0,
 				"headers": {

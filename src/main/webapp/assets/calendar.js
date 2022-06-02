@@ -39,13 +39,15 @@ async function get_posts() {
       redirect: 'follow'
     };
 
+    var addPostUrl = window.location.href;
+    addPostUrl = addPostUrl.replace("#", "") + "/posts";
+
     var posts;
 
-    return fetch("${settings_site.url}/teacher/posts", requestOptions)
+    return fetch(addPostUrl, requestOptions)
       .then(response => response.text())
       .then((result) => {
           console.log(JSON.parse(result));
-          //return JSON.parse('[' + result + ']');
           response = JSON.parse(result);
       })
       .catch(error => console.log('error', error));

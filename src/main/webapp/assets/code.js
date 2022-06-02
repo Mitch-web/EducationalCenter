@@ -3,9 +3,12 @@ function sendAuthData() {
   let login_inp = document.querySelector('.login_inp');
   let pass_inp = document.querySelector('.pass_inp');
   let error_message = document.querySelector('.error_message');
-	if(login_inp.value!='' && pass_inp.value!=''){
+	if(login_inp.value!='' && pass_inp.value!='') {
+	    var addPostUrl = window.location.href;
+        addPostUrl = addPostUrl.replace("#", "") + "/login";
+
 		var settings = {
-			"url": `${settings_site.url}/login`,
+			"url": addPostUrl,
 			"method": "POST",
 			"timeout": 0,
 			"headers": {

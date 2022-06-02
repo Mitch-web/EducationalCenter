@@ -54,7 +54,10 @@
                 redirect: 'follow'
             };
 
-            fetch("${settings_site.url}/teacher/courses/math/add-post", requestOptions)
+            var addPostUrl = window.location.href;
+            addPostUrl = addPostUrl.replace("#", "") + "/add-post";
+
+            fetch(addPostUrl, requestOptions)
                 .then(response => {
                     if(response.status == 400){
                         alert("Введіть коректну дату!");

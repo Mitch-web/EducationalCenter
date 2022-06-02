@@ -29,7 +29,7 @@ public class TeacherController {
         return new ModelAndView(CALENDAR_PAGE);
     }
 
-    @GetMapping("/posts")
+    @GetMapping("/calendar/posts")
     @ResponseBody public ResponseEntity getCalendarPosts(HttpServletRequest request) {
         return new ResponseEntity(
                 postService.getPostsByDate()

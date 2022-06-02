@@ -1,5 +1,5 @@
-<%@ page pageEncoding="UTF-8" %>
 <%@ taglib uri='http://java.sun.com/jsp/jstl/core' prefix='c'%>
+<%@ page pageEncoding="UTF-8" %>
 <html lang="en">
 
 <%@ include file="jspf/head.jspf" %>
@@ -21,21 +21,18 @@
                     <h3 class="course_item_title">Title</h3>
                     <p class="course_item_subtitle">Sub title uihihiuhihiuhiohiogouyguyfiutfuygogoihiuhiguyuygogiouhiuhiguyfuit</p>
                 </a>
-
-                <a href="#" class="course_list_item">
-                    <h3 class="course_item_title">Title</h3>
-                    <p class="course_item_subtitle">Sub title uihihiuhihiuhiohiogouyguyfiutfuygogoihiuhiguyuygogiouhiuhiguyfuit</p>
-                </a>
             </div>
-            <a href="#" class="add_event_container">
-                <p class="add_event_text">Додати завдання</p>
-                <div class="add_event_round_bg">
-                    <div class="add_event_border">
-                        <div class="plus_elem_one"></div>
-                        <div class="plus_elem_two"></div>
+            <c:if test="${role == 'teacher'}">
+                <a href="#" class="add_event_container">
+                    <p class="add_event_text">Додати завдання</p>
+                    <div class="add_event_round_bg">
+                        <div class="add_event_border">
+                            <div class="plus_elem_one"></div>
+                            <div class="plus_elem_two"></div>
+                        </div>
                     </div>
-                </div>
-            </a>
+                </a>
+            </c:if>
         </main>
         <%@ include file="jspf/add_post.jspf" %>
         <script src="/assets/settings.js"></script>

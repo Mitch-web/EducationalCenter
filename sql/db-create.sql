@@ -51,8 +51,8 @@ create table if not exists courses
 
 -- INSERT VALUES TO COURSES
 INSERT INTO courses(name) VALUES ('Математика');
-INSERT INTO courses(name) VALUES ('Химия');
-INSERT INTO courses(name) VALUES ('Физика');
+INSERT INTO courses(name) VALUES ('Хімія');
+INSERT INTO courses(name) VALUES ('Фізика');
 
 SET foreign_key_checks = 0;
 drop table if exists courses_have_users;
@@ -100,11 +100,11 @@ create table if not exists courses_have_posts
     course_id int not null,
     foreign key (course_id)
         references courses(id)
-        on delete no action on update no action,
+        on delete cascade on update cascade,
     post_id int not null,
     foreign key (post_id)
         references posts(id)
-        on delete no action on update no action
+        on delete cascade on update cascade
 );
 
 -- INSERT VALUES TO COURSES_HAVE_POSTS
