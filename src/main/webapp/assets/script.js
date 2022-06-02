@@ -55,11 +55,15 @@
             };
 
             fetch("https://educationcenter1.herokuapp.com/teacher/courses/math/add-post", requestOptions)
-                .then(response => response.text())
-                .then(result => console.log(result))
-                .catch(error => console.log('error', error));
+                .then(response => {
+                    if(response.status == 400){
+                        alert("Введіть коректну дату!");
+                    }
+                })
+                .then(result => popup_window.classList.remove('active'))
+                .catch(error => alert('error', error));
         } else {
-            alert('Введи хоть шо нибудь, еблан');
+            alert('Введіть дані для створення завдання!');
         }
     });
 })

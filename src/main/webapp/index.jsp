@@ -19,6 +19,7 @@
 			<form:form class="auth_form" name="loginForm">
 				<label class="login_text">Логин</label><br>
 				<input type="text" class="login_inp" placeholder="Ваш логин" name="login"><br>
+				${user.login}
 				<label class="pass_text">Пароль</label>
 				<div class="passwordInpButton_cont">
 					<input type="password" class="pass_inp" placeholder="Ваш пароль" name="password">

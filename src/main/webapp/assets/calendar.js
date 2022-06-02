@@ -1,29 +1,30 @@
-//let response = [{
-//        date: '2022-05-31',
-//        title: 'Первый тайтл',
-//        subtitle: 'Илюша ну шо? Никита может?'
-//    },
-//    {
-//        date: '2022-06-04',
-//        title: 'Второй тайтл',
-//        subtitle: 'В епаме такому не учат'
-//    },
-//    {
-//        date: '2022-06-10',
-//        title: 'Третий тайтл',
-//        subtitle: 'Вот это я понимаю код'
-//    },
-//    {
-//        date: '2022-06-21',
-//        title: 'Четвёртый тайтл',
-//        subtitle: 'Сдавайся русский Иван, помой пизду русской Наташке'
-//    },
-//    {
-//        date: '2022-07-01',
-//        title: 'Пятый тайтл',
-//        subtitle: 'А шо я? Я JavaScript FrontEnd Super Ultra Senior TeamLead MEGA Developer'
-//    }
-//]
+/*=====# RESPONSE EXAMPLE =============
+let response = [{
+        date: '2022-05-31',
+        title: 'Первый тайтл',
+        subtitle: 'Илюша ну шо? Никита может?'
+    },
+    {
+        date: '2022-06-04',
+        title: 'Второй тайтл',
+        subtitle: 'В епаме такому не учат'
+    },
+    {
+        date: '2022-06-10',
+        title: 'Третий тайтл',
+        subtitle: 'Вот это я понимаю код'
+    },
+    {
+        date: '2022-06-21',
+        title: 'Четвёртый тайтл',
+        subtitle: 'Сдавайся русский Иван, помой пизду русской Наташке'
+    },
+    {
+        date: '2022-07-01',
+        title: 'Пятый тайтл',
+        subtitle: 'А шо я? Я JavaScript FrontEnd Super Ultra Senior TeamLead MEGA Developer'
+    }
+]*/
 
 let response;
 

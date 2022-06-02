@@ -25,9 +25,9 @@
           class="org.apache.commons.dbcp.BasicDataSource"
           destroy-method="close">
         <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
-        <property name="url" value="jdbc:mysql://176.114.3.205:3306/education?serverTimezone=UTC"/>
-        <property name="username" value="root1"/>
-        <property name="password" value="rootROOT1"/>
+        <property name="url" value="jdbc:mysql://db4free.net:3306/educationcenter?serverTimezone=UTC"/>
+        <property name="username" value="rooteducation"/>
+        <property name="password" value="rootroot"/>
     </bean>
 
     <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">

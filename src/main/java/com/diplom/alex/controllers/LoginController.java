@@ -5,13 +5,13 @@ import com.diplom.alex.model.RoleModel;
 import com.diplom.alex.model.UserModel;
 import com.diplom.alex.services.RoleService;
 import com.diplom.alex.services.UserService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -29,7 +29,7 @@ public class LoginController {
     private RoleService roleService;
 
     @PostMapping("/login")
-    public @ResponseBody ResponseEntity<Object> login(@ModelAttribute("loginForm") @Valid LoginForm loginForm,
+    public @ResponseBody ResponseEntity<Object> login(@ModelAttribute("loginForm") @Valid LoginForm loginForm, HttpSession session,
                                                       BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
             return ResponseEntity.badRequest()
@@ -54,9 +54,8 @@ public class LoginController {
     }
 
     @GetMapping("/logout")
-    public ModelAndView logout(HttpSession session) {
-        ModelAndView maw = new ModelAndView("");
-        session.removeAttribute("user");
-        return maw;
+    public ResponseEntity logout(HttpSession session) {
+        session.invalidate();
+        return ResponseEntity.ok("success");
     }
 }
