@@ -5,7 +5,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-	<link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico">
+	<link rel="icon" type="image/x-icon" href="./assets/images/favicon.ico">
 	<title>Авторизация</title>
 	<link rel="stylesheet" href="/assets/old.css">
 </head>
@@ -19,7 +19,6 @@
 			<form:form class="auth_form" name="loginForm">
 				<label class="login_text">Логин</label><br>
 				<input type="text" class="login_inp" placeholder="Ваш логин" name="login"><br>
-				${user.login}
 				<label class="pass_text">Пароль</label>
 				<div class="passwordInpButton_cont">
 					<input type="password" class="pass_inp" placeholder="Ваш пароль" name="password">

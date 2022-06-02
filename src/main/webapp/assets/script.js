@@ -54,7 +54,7 @@
                 redirect: 'follow'
             };
 
-            fetch("https://educationcenter1.herokuapp.com/teacher/courses/math/add-post", requestOptions)
+            fetch("${settings_site.url}/teacher/courses/math/add-post", requestOptions)
                 .then(response => {
                     if(response.status == 400){
                         alert("Введіть коректну дату!");

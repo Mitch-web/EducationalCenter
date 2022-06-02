@@ -20,6 +20,7 @@
                 </div>
             </a>
         </main>
+        <script src="/assets/settings.js"></script>
         <script src="../assets/script.js"></script>
 </body>
 

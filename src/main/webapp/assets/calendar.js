@@ -41,7 +41,7 @@ async function get_posts() {
 
     var posts;
 
-    return fetch("https://educationcenter1.herokuapp.com/teacher/posts", requestOptions)
+    return fetch("${settings_site.url}/teacher/posts", requestOptions)
       .then(response => response.text())
       .then((result) => {
           console.log(JSON.parse(result));

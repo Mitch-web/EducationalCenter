@@ -1,3 +1,3 @@
 let settings_site = {
-	url: "http://localhost:8080"
+	url: "https://educationcenter1.herokuapp.com"
 }

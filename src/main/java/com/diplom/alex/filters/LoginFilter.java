@@ -1,6 +1,7 @@
 package com.diplom.alex.filters;
 
 import com.diplom.alex.model.RoleModel;
+import com.diplom.alex.model.UserModel;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
@@ -23,6 +24,11 @@ public class LoginFilter implements Filter {
         if (!shouldExclude((HttpServletRequest) request)) {
             if (null == session.getAttribute("user")) {
                 ((HttpServletResponse) response).sendRedirect("/");
+            }
+        } else {
+            if (((HttpServletRequest) request).getRequestURI().equals("/") && null != session.getAttribute("user")) {
+                session.setAttribute("redirected", true);
+                ((HttpServletResponse) response).sendRedirect("/" + session.getAttribute("role") + "/cabinet");
             }
         }
         filterChain.doFilter(request, response);

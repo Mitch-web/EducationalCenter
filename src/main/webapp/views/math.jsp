@@ -38,6 +38,7 @@
             </a>
         </main>
         <%@ include file="jspf/add_post.jspf" %>
+        <script src="/assets/settings.js"></script>
         <script src="/assets/script.js"></script>
 </body>
 
