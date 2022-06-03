@@ -97,6 +97,7 @@
 
 function preloadStart(className) {
     let ClassNameElem = document.querySelector(`.${className}`);
+    console.log(ClassNameElem);
     ClassNameElem.style.filter = 'blur(3px);';
 }
 
