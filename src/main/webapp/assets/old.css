@@ -1,100 +1,125 @@
-*, body{ 
-	padding: 0;
-	margin: 0;
+*,
+body {
+    padding: 0;
+    margin: 0;
 }
-body{
-	min-height: 100vh;
-	background-color: #eff0f0;
+
+body {
+    min-height: 100vh;
+    background-color: #eff0f0;
 }
-.auth_popup_wrapper{
-	width: 28%;
-	height: max-content;
-	overflow: auto;
-	margin: auto;
-	position: absolute;
-	top: 0;
-	left: 0;
-	bottom: 0;
-	right: 0;
-	background-color: #ccc;
-	border-radius: 30px;
-	filter: drop-shadow(2px 4px 11px black);
+
+.auth_popup_wrapper {
+    width: 28%;
+    height: max-content;
+    overflow: auto;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: #ccc;
+    border-radius: 30px;
+    filter: drop-shadow(2px 4px 11px black);
 }
-.auth_popup_container{
-	background-color: #c3d1e6;
-	border-radius: 20px;
-	margin: 10px;
-	padding: 15px;
-	position: relative;
+
+.auth_popup_container {
+    background-color: #c3d1e6;
+    border-radius: 20px;
+    margin: 10px;
+    padding: 15px;
+    position: relative;
 }
-.auth_company_logo{
-	position: absolute;
-	top: 10px;
-	left: 10px;
-	background-color: #aaa;
-	width: 35px;
-	height: 35px;
-	border-radius: 100px;
-	border: 1px solid #333;
+
+.auth_company_logo {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: #aaa;
+    width: 35px;
+    height: 35px;
+    border-radius: 100px;
+    border: 1px solid #333;
 }
-.auth_text{
-	text-align: center;
+
+.auth_text {
+    text-align: center;
     font-family: system-ui;
     font-weight: 600;
     font-size: 19px;
 }
-.auth_form{
-	margin-top: 15px;
-	margin-bottom: 15px;
+
+.auth_form {
+    margin-top: 15px;
+    margin-bottom: 15px;
 }
-.login_text, .pass_text{
-	font-family: system-ui;
+
+.login_text,
+.pass_text {
+    font-family: system-ui;
     font-weight: 600;
     font-size: 16px;
 }
-.login_inp{
-	width: 100%;
+
+.login_inp {
+    width: 100%;
     height: 35px;
     border-radius: 7px;
     border: 0;
     outline: none;
     padding-left: 5%;
-	padding-right: 5%;
+    padding-right: 5%;
     font-size: 15px;
-	margin-top: 10px;
+    margin-top: 10px;
     margin-bottom: 15px;
 }
-.auth_remember{
-	font-family: system-ui;
-    font-weight: 600;
-    font-size: 14px;
-}
-.forget_pass{
-	text-decoration: none;
+
+.auth_remember {
     font-family: system-ui;
     font-weight: 600;
     font-size: 14px;
 }
 
-.passwordInpButton_cont{
-	height: max-content;
+.forget_pass {
+    text-decoration: none;
+    font-family: system-ui;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.add_new_employee {
+    text-decoration: none;
+    font-family: system-ui;
+    font-weight: 600;
+    font-size: 14px;
+    border: 0;
+    background-color: inherit;
+    cursor: pointer;
+    color: blue;
+}
+
+.passwordInpButton_cont {
+    height: max-content;
     position: relative;
     width: 100%;
 }
-.pass_inp{
-	padding-left: 5%;
-	padding-right: 25%;
+
+.pass_inp {
+    padding-left: 5%;
+    padding-right: 25%;
     width: 100%;
-	height: 35px;
+    height: 35px;
     border-radius: 7px;
     border: 0;
     outline: none;
-	font-size: 15px;
-	margin-top: 10px;
+    font-size: 15px;
+    margin-top: 10px;
     margin-bottom: 15px;
 }
-.post_button{
-	position: absolute;
+
+.post_button {
+    position: absolute;
     top: 10px;
     width: 20%;
     border-radius: 0 7px 6px 0;
@@ -109,8 +134,9 @@ body{
     font-weight: 600;
     font-size: 16px;
 }
-.error_message{
-	overflow: auto;
+
+.error_message {
+    overflow: auto;
     width: max-content;
     height: max-content;
     position: absolute;
@@ -128,66 +154,72 @@ body{
     border-radius: 19px;
     opacity: 0;
     display: none;
-	transition: 0.5s;
+    transition: 0.5s;
 }
 
-@media(max-width:873px){
-	.auth_popup_wrapper{
-		width: 45%;
-	}
-}
-@media(max-width:600px){
-	.auth_popup_wrapper{
-		width: 56%;
-	}
-}
-@media(max-width:450px){
-	.auth_popup_wrapper{
-		width: 75%;
-	}
-	.error_message{
-		padding: 2em 1.5em;
-	}
-}
-@media(max-width:387px){
-	.auth_popup_wrapper{
-		width: 95%;
-	}
-	
-}
-@media(min-width:1700px){
-	.auth_popup_wrapper{
-		width: 20%;
-	}
+@media(max-width:873px) {
+    .auth_popup_wrapper {
+        width: 45%;
+    }
 }
 
-p{
-	margin: 0;
-	padding: 0;
+@media(max-width:600px) {
+    .auth_popup_wrapper {
+        width: 56%;
+    }
 }
-.add_new_employee_popup{
-	display: none;
-	opacity: 0;
-	width: 27%;
-	height: max-content;
-	overflow: auto;
-	margin: auto;
-	position: absolute;
-	top: 0;
-	left: 0;
-	bottom: 0;
-	right: 0;
-	background-color: #ccc;
-	border-radius: 30px;
-	filter: drop-shadow(2px 4px 11px black);
-	padding: 4%;
+
+@media(max-width:450px) {
+    .auth_popup_wrapper {
+        width: 75%;
+    }
+    .error_message {
+        padding: 2em 1.5em;
+    }
 }
-.add_new_employee_popup .form{
-	display: flex;
-	flex-direction: column;
+
+@media(max-width:387px) {
+    .auth_popup_wrapper {
+        width: 95%;
+    }
 }
-.close_employee_add_popup{
-	position: absolute;
+
+@media(min-width:1700px) {
+    .auth_popup_wrapper {
+        width: 20%;
+    }
+}
+
+p {
+    margin: 0;
+    padding: 0;
+}
+
+.add_new_employee_popup {
+    display: none;
+    opacity: 0;
+    width: 27%;
+    height: max-content;
+    overflow: auto;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: #ccc;
+    border-radius: 30px;
+    filter: drop-shadow(2px 4px 11px black);
+    padding: 4%;
+}
+
+.add_new_employee_popup .form {
+    display: flex;
+    flex-direction: column;
+}
+
+.close_employee_add_popup {
+    position: absolute;
     top: 5%;
     right: 5%;
     cursor: pointer;
@@ -195,21 +227,25 @@ p{
     font-weight: 700;
     font-family: cursive;
 }
-.add_new_employee_popup input[type="text"]{
-	margin-top: 10px;
+
+.add_new_employee_popup input[type="text"],
+.add_new_employee_popup input[type="password"] {
+    margin-top: 10px;
     height: 22px;
     border: 0;
     border-radius: 8px;
     outline: none;
     padding-left: 10px;
 }
-.add_new_employee_popup label{
-	margin-top: 10px;
+
+.add_new_employee_popup label {
+    margin-top: 10px;
     font-size: 16px;
     font-family: cursive;
 }
-#choose_employee_type{
-	width: 50%;
+
+#choose_employee_type {
+    width: 50%;
     margin: 0 auto;
     margin-top: 10px;
     margin-bottom: 10px;
@@ -222,19 +258,15 @@ p{
     font-size: 14px;
     display: flex;
 }
-.add_new_employee_popup input[type="submit"]{
-	border-radius: 100px;
+
+.add_new_employee_popup input[type="submit"] {
+    border-radius: 100px;
     border: 0;
     width: 50%;
-    margin: 0 auto;
+    margin: 20px auto 0;
     font-size: 14px;
     padding: 8px 10px;
     cursor: pointer;
     font-family: cursive;
     font-weight: 700;
 }
-
-
-
-
-

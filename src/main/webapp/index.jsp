@@ -43,7 +43,7 @@
                     <label for="login">Придумайте логин:</label>
                     <input type="text" name="login" class="login" />
                     <label for="password">Придумайте пароль:</label>
-                    <input type="text" name="password" class="password" />
+                    <input type="password" name="password" class="password" />
                     <input class="add_new_employee_but" type="submit" value="Зарегистрироваться" />
                 </form:form>
             </div>
