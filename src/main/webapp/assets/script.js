@@ -22,9 +22,9 @@
 
     const exitButton = document.querySelector(".account_settings_container button");
     exitButton.addEventListener("click", () => {
-       var logoutUrl = window.location.origin;
-       logoutUrl = logoutUrl.replace("#", "") + "/logout";
-       var settings = {
+        var logoutUrl = window.location.origin;
+        logoutUrl = logoutUrl.replace("#", "") + "/logout";
+        var settings = {
             "url": logoutUrl,
             "method": "GET",
             "timeout": 0,
@@ -37,8 +37,8 @@
             error: function(response) {
                 alert("Fail");
             }
-       };
-        $.ajax(settings).done(function (response) {
+        };
+        $.ajax(settings).done(function(response) {
             console.log(response);
         });
     });
@@ -82,7 +82,7 @@
 
             fetch(addPostUrl, requestOptions)
                 .then(response => {
-                    if(response.status == 400){
+                    if (response.status == 400) {
                         alert("Введіть коректну дату!");
                     }
                 })
@@ -94,3 +94,13 @@
     });
 })
 ();
+
+function preloadStart(className) {
+    let ClassNameElem = document.querySelector(`.${className}`);
+    ClassNameElem.style.filter = 'blur(3px);';
+}
+
+function preloadEnd(className) {
+    let ClassNameElem = document.querySelector(`.${className}`);
+    ClassNameElem.style.filter = 'blur(0px);';
+}
