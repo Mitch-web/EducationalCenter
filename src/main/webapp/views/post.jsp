@@ -12,7 +12,7 @@
                 <h2 class="course_title">Завдання з курсу 'Математика'</h2>
                 <c:choose>
                     <c:when test="${!incorrectPost}">
-                        <div class="course_list_item">
+                        <div class="course_list_item" style="margin-top: 60px;">
                             <h3 class="course_item_title">Назва завдання: ${post.title}</h3>
                             <p class="course_item_subtitle">Опис завдання: ${post.subtitle}</p>
                             <p>Кінцевий термін: ${post.deadline}</p>
