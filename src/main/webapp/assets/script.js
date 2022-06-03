@@ -22,7 +22,7 @@
 
     const exitButton = document.querySelector(".account_settings_container button");
     exitButton.addEventListener("click", () => {
-       var logoutUrl = window.location.href;
+       var logoutUrl = window.location.origin;
        logoutUrl = logoutUrl.replace("#", "") + "/logout";
        var settings = {
             "url": logoutUrl,
