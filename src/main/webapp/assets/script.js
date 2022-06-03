@@ -16,9 +16,7 @@
         add_task_cont = document.querySelector('.add_event_container');
     }
 
-    if (url.href.includes('student')) {
-        add_task_cont.style.display = "none";
-    }
+
 
     const exitButton = document.querySelector(".account_settings_container button");
     exitButton.addEventListener("click", () => {
