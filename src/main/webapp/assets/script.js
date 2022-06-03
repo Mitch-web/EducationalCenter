@@ -81,12 +81,18 @@
             addPostUrl = addPostUrl.replace("#", "") + "/add-post";
 
             fetch(addPostUrl, requestOptions)
+                .then(() => {
+                    preloadStart('popup_window');
+                })
                 .then(response => {
                     if (response.status == 400) {
                         alert("Введіть коректну дату!");
                     }
                 })
-                .then(result => popup_window.classList.remove('active'))
+                .then((result) => {
+                    preloadEnd('popup_window');
+                    popup_window.classList.remove('active');
+                })
                 .catch(error => alert('error', error));
         } else {
             alert('Введіть дані для створення завдання!');
@@ -103,5 +109,6 @@ function preloadStart(className) {
 
 function preloadEnd(className) {
     let ClassNameElem = document.querySelector(`.${className}`);
-    ClassNameElem.style.filter = 'blur(0px);';
+    console.log(ClassNameElem);
+    ClassNameElem.classList.remove('loading');
 }

@@ -21,12 +21,17 @@ body {
 }
 
 .loading::after {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
     position: absolute;
-    content: '';
+    content: 'Loading...';
     width: 100%;
     height: 100%;
-    filter: blur(3px);
+    background: #fff;
+    top: 0;
+    left: 0;
 }
 
 .user_name {
