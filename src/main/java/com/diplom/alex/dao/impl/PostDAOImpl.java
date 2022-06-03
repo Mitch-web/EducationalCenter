@@ -43,7 +43,7 @@ public class PostDAOImpl implements PostDAO {
 
     @Override
     public List<PostModel> getPostsByCourse(String courseName) {
-        return jdbcTemplate.query(String.format("SELECT p.title, p.subtitle FROM %s AS cp " +
+        return jdbcTemplate.query(String.format("SELECT p.id, p.title, p.subtitle FROM %s AS cp " +
                 "JOIN %s AS c ON cp.course_id = c.id " +
                 "JOIN %s AS p ON cp.post_id = p.id where c.name = '%s'",
                         COURSE_HAVE_POSTS_TABLE, COURSE_TABLE, POST_TABLE, courseName),
