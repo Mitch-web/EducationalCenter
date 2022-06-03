@@ -47,19 +47,7 @@
                     <input class="add_new_employee_but" type="submit" value="Зарегистрироваться" />
                 </form:form>
             </div>
-            <script>
-                function preloadStart(className) {
-                    let ClassNameElem = document.querySelector(`.${className}`);
-                    console.log(ClassNameElem);
-                    ClassNameElem.classList.add('loading');
-                }
 
-                function preloadEnd(className) {
-                    let ClassNameElem = document.querySelector(`.${className}`);
-                    console.log(ClassNameElem);
-                    ClassNameElem.classList.remove('loading');
-                }
-            </script>
             <p class="error_message"></p>
             <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
             <script src="/assets/settings.js"></script>
