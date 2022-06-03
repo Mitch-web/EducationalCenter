@@ -20,6 +20,27 @@
         add_task_cont.style.display = "none";
     }
 
+    const exitButton = document.querySelector(".account_settings_container button");
+    exitButton.addEventListener("click", () => {
+       var settings = {
+            "url": `${settings_site.url}/logout`,
+            "method": "GET",
+            "timeout": 0,
+            "headers": {
+                "Content-Type": "application/x-www-form-urlencoded"
+            },
+            "success": function(response) {
+                location.replace('/');
+            },
+            error: function(response) {
+                alert("Fail");
+            }
+       };
+        $.ajax(settings).done(function (response) {
+            console.log(response);
+        });
+    });
+
     const add_event_container = document.querySelector('.add_event_container');
     const popup_window = document.querySelector('.popup_window');
     const close = document.querySelector('.close');

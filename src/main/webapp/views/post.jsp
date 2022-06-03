@@ -9,18 +9,19 @@
         <main>
             <%@ include file="jspf/course_list.jspf" %>
             <div class="content_side">
-                <h2 class="course_title">Фізика</h2>
-                <c:forEach var="post" items="${posts}">
-                    <a href="#" class="course_list_item">
-                        <h3 class="course_item_title">${post.title}</h3>
-                        <p class="course_item_subtitle">${post.subtitle}</p>
-                    </a>
-                </c:forEach>
-
-                <a href="#" class="course_list_item">
-                    <h3 class="course_item_title">Title</h3>
-                    <p class="course_item_subtitle">Sub title uihihiuhihiuhiohiogouyguyfiutfuygogoihiuhiguyuygogiouhiuhiguyfuit</p>
-                </a>
+                <h2 class="course_title">Завдання з курсу 'Математика'</h2>
+                <c:choose>
+                    <c:when test="${!incorrectPost}">
+                        <div class="course_list_item">
+                            <h3 class="course_item_title">Назва завдання: ${post.title}</h3>
+                            <p class="course_item_subtitle">Опис завдання: ${post.subtitle}</p>
+                            <p>Кінцевий термін: ${post.deadline}</p>
+                        </div>
+                    </c:when>
+                    <c:otherwise>
+                        <p>Такого завдання не існує!</p>
+                    </c:otherwise>
+                <c:choose>
             </div>
             <c:if test="${role == 'teacher'}">
                 <a href="#" class="add_event_container">
@@ -34,7 +35,6 @@
                 </a>
             </c:if>
         </main>
-        <%@ include file="jspf/add_post.jspf" %>
         <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
         <script src="/assets/settings.js"></script>
         <script src="/assets/script.js"></script>

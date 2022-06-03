@@ -117,6 +117,7 @@
             margin-top: 50px;
         }
     </style>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="/assets/settings.js"></script>
     <script src="/assets/script.js"></script>
     <script src="/assets/calendar.js"></script>
