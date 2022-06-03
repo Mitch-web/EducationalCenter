@@ -30,7 +30,7 @@
                         <label for="auth_remember" class="auth_remember">Запомнить меня на этом компьютере</label><br>
                     </form:form>
                     <a href="#" class="forget_pass">Забыли пароль?</a>
-                    <input class="add_new_employee" type="submit" value="Зарегистрироваться" />
+                    <input class="add_new_employee" type="submit" value="Зарегистрироваться" /> lala
                 </div>
             </div>
 
