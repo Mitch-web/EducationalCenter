@@ -1,4 +1,4 @@
-let add_new_employee = document.querySelector('.add_new_employee');
+/*let add_new_employee = document.querySelector('.add_new_employee');
 let add_new_employee_popup = document.querySelector('.add_new_employee_popup');
 add_new_employee.addEventListener('click', ()=>{
 	add_new_employee_popup.style.display = 'block';
@@ -59,4 +59,4 @@ function add_new_empl() {
 			},100);
 
 	});
-}
+}*/

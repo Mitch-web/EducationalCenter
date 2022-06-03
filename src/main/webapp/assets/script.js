@@ -88,9 +88,13 @@
                         preloadEnd('popup_window');
                     }
                 })
-                .then(result => { preloadEnd('popup_window');
-                    popup_window.classList.remove('active'); })
-                .catch(error => alert(error));
+                .then(result => {
+                    preloadEnd('popup_window');
+                    popup_window.classList.remove('active');
+                    window.location.reload();
+                })
+
+            .catch(error => alert(error));
         } else {
             alert('Введіть дані для створення завдання!');
         }
