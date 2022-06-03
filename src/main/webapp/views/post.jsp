@@ -21,7 +21,7 @@
                     <c:otherwise>
                         <p>Такого завдання не існує!</p>
                     </c:otherwise>
-                <c:choose>
+                </c:choose>
             </div>
             <c:if test="${role == 'teacher'}">
                 <a href="#" class="add_event_container">
