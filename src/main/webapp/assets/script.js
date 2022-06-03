@@ -62,6 +62,7 @@
     send_project_form.addEventListener('submit', function(e) {
         e.preventDefault();
         if (title_inp.value != 0 && description_inp.value != 0) {
+            preloadStart('popup_window');
             var myHeaders = new Headers();
             myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
 
@@ -81,19 +82,15 @@
             addPostUrl = addPostUrl.replace("#", "") + "/add-post";
 
             fetch(addPostUrl, requestOptions)
-                .then(() => {
-                    preloadStart('popup_window');
-                })
                 .then(response => {
                     if (response.status == 400) {
                         alert("Введіть коректну дату!");
+                        preloadEnd('popup_window');
                     }
                 })
-                .then((result) => {
-                    preloadEnd('popup_window');
-                    popup_window.classList.remove('active');
-                })
-                .catch(error => alert('error', error));
+                .then(result => { preloadEnd('popup_window');
+                    popup_window.classList.remove('active'); })
+                .catch(error => alert(error));
         } else {
             alert('Введіть дані для створення завдання!');
         }
