@@ -81,9 +81,10 @@ add_new_employee.addEventListener('click', () => {
 });
 
 function add_new_empl() {
-    preloadStart('add_new_employee_popup');
+
     let add_new_employee_but = document.querySelector('.add_new_employee_but');
     add_new_employee_but.addEventListener('click', () => {
+        preloadStart('add_new_employee_popup');
         let employee_name = document.querySelector('.employee_name');
         let employee_lastname = document.querySelector('.employee_lastname');
         let employee_login = document.querySelector('.login');
