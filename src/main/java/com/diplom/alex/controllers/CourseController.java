@@ -44,10 +44,10 @@ public class CourseController {
     }
 
     @GetMapping("/*/posts/{id}")
-    public ModelAndView getPostPage(@PathVariable(value = "id") String id) throws ParseException {
+    public ModelAndView getPostPage(@PathVariable(value = "id") int id) throws ParseException {
         ModelAndView maw = new ModelAndView("post");
-        PostModel postById = postService.getPostById(Integer.parseInt(id));
-        if (postById.getId() == Integer.parseInt(id)) {
+        PostModel postById = postService.getPostById(id);
+        if (postById.getId() ==id) {
             maw.addObject("post", postById);
             maw.addObject("timeLeft", getDatesDifferenceInDays(postById.getDeadline()));
         } else {

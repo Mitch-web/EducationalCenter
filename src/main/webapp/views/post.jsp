@@ -2,7 +2,7 @@
 <%@ taglib uri='http://java.sun.com/jsp/jstl/core' prefix='c'%>
 <c:set var="timeToDeadline" value="До сдачі завдання залишилось: ${timeLeft} днів"/>
 <c:if test="${timeLeft < 0}">
-    <c:set var="timeToDeadline" value="Термін здачі завдання вже закінчився"/>
+    <c:set var="timeToDeadline" value="Термін здачі завдання вже закінчився ${timeLeft * -1} день(дні) тому"/>
 </c:if>
 <c:if test="${timeLeft == -9999}">
     <c:set var="timeToDeadline" value="Завдання не має терміну"/>
