@@ -17,11 +17,6 @@
                         <p class="course_item_subtitle">${post.subtitle}</p>
                     </a>
                 </c:forEach>
-
-                <a href="#" class="course_list_item">
-                    <h3 class="course_item_title">Title</h3>
-                    <p class="course_item_subtitle">Sub title uihihiuhihiuhiohiogouyguyfiutfuygogoihiuhiguyuygogiouhiuhiguyfuit</p>
-                </a>
             </div>
             <c:if test="${role == 'teacher'}">
                 <a href="#" class="add_event_container">
