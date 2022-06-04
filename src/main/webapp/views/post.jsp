@@ -1,5 +1,12 @@
 <%@ page pageEncoding="UTF-8" %>
 <%@ taglib uri='http://java.sun.com/jsp/jstl/core' prefix='c'%>
+<c:set var="timeToDeadline" value="До сдачі завдання залишилось: ${timeLeft} днів"/>
+<c:if test="${timeLeft < 0}">
+    <c:set var="timeToDeadline" value="Термін здачі завдання вже закінчився"/>
+</c:if>
+<c:if test="${timeLeft == -9999}">
+    <c:set var="timeToDeadline" value="Завдання не має терміну"/>
+</c:if>
 <html lang="en">
 
 <%@ include file="jspf/head.jspf" %>
@@ -15,7 +22,10 @@
                         <div class="course_list_item" style="margin-top: 60px;">
                             <h3 class="course_item_title">Назва завдання: ${post.title}</h3>
                             <p class="course_item_subtitle">Опис завдання: ${post.subtitle}</p>
-                            <p>Кінцевий термін: ${post.deadline}</p>
+                            <c:if test="${post.deadline != null}">
+                                <p>Кінцевий термін: ${post.deadline}</p>
+                            </c:if>
+                            <p>${timeToDeadline}</p>
                         </div>
                     </c:when>
                     <c:otherwise>

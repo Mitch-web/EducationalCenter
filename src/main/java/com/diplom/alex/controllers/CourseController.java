@@ -12,6 +12,11 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.concurrent.TimeUnit;
+
 import static com.diplom.alex.constants.ApplicationConstants.*;
 
 @Controller
@@ -39,11 +44,12 @@ public class CourseController {
     }
 
     @GetMapping("/*/posts/{id}")
-    public ModelAndView getPostPage(@PathVariable(value = "id") String id) {
+    public ModelAndView getPostPage(@PathVariable(value = "id") String id) throws ParseException {
         ModelAndView maw = new ModelAndView("post");
         PostModel postById = postService.getPostById(Integer.parseInt(id));
         if (postById.getId() == Integer.parseInt(id)) {
             maw.addObject("post", postById);
+            maw.addObject("timeLeft", getDatesDifferenceInDays(postById.getDeadline()));
         } else {
             maw.addObject("incorrectPost", true);
         }
@@ -56,5 +62,16 @@ public class CourseController {
         maw.addObject("posts", postService.getPostsByCourse(courseName));
         maw.addObject("requestUri", request.getRequestURI());
         return maw;
+    }
+
+    private long getDatesDifferenceInDays(String deadline) throws ParseException {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        if (null != deadline) {
+            Date deadlineDate = sdf.parse(deadline);
+            Date currentDate = sdf.parse(sdf.format(new Date()));
+            long diff = deadlineDate.getTime() - currentDate.getTime();
+            return TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
+        }
+        return -9999L;
     }
 }
