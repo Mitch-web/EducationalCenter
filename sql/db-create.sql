@@ -83,6 +83,10 @@ CREATE TABLE IF NOT EXISTS posts
     title varchar(30) NOT NULL,
     subtitle varchar(50) NOT NULL,
     deadline varchar(20),
+    file_id int null,
+    foreign key (file_id)
+        references files(id)
+        on delete cascade on update no action,
     PRIMARY KEY (id)
 );
 
@@ -90,6 +94,18 @@ CREATE TABLE IF NOT EXISTS posts
 INSERT INTO posts (title, subtitle) VALUES (
     'ДЗ на 25.04.22', 'Отвесить чапалаха'
 );
+
+SET foreign_key_checks = 0;
+DROP TABLE IF EXISTS files;
+SET foreign_key_checks = 1;
+
+CREATE TABLE IF NOT EXISTS files
+(
+    id int auto_increment,
+    content_type varchar(30) NOT NULL,
+    content blob NOT NULL,
+    PRIMARY KEY(id)
+)
 
 SET foreign_key_checks = 0;
 drop table if exists courses_have_posts;

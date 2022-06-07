@@ -2,6 +2,7 @@ package com.diplom.alex.dao.impl;
 
 
 import com.diplom.alex.dao.UserDAO;
+import com.diplom.alex.model.CourseModel;
 import com.diplom.alex.model.UserModel;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;

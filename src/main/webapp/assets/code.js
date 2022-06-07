@@ -31,7 +31,6 @@ function sendAuthData() {
 
         $.ajax(settings).done(function(response) {
             console.log(response);
-            console.log(window.location.origin + response);
         });
     } else {
         preloadEnd('auth_popup_wrapper');
@@ -139,12 +138,10 @@ function add_new_empl() {
 
 function preloadStart(className) {
     let ClassNameElem = document.querySelector(`.${className}`);
-    console.log(ClassNameElem);
     ClassNameElem.classList.add('loading');
 }
 
 function preloadEnd(className) {
     let ClassNameElem = document.querySelector(`.${className}`);
-    console.log(ClassNameElem);
     ClassNameElem.classList.remove('loading');
 }

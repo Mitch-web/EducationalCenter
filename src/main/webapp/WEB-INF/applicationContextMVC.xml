@@ -43,6 +43,8 @@
 
     <bean id="courseDAO" class="com.diplom.alex.dao.impl.CourseDAOImpl"/>
 
+    <bean id="fileDAO" class="com.diplom.alex.dao.impl.FileDAOImpl"/>
+
     <!--===SERVICES===========================-->
     <bean id="userService" class="com.diplom.alex.services.impl.UserServiceImpl">
         <constructor-arg name="userDAO" ref="userDAO"/>
@@ -58,6 +60,16 @@
 
     <bean id="courseService" class="com.diplom.alex.services.impl.CourseServiceImpl">
         <constructor-arg name="courseDAO" ref="courseDAO"/>
+    </bean>
+
+    <bean id="fileService" class="com.diplom.alex.services.impl.FileServiceImpl">
+        <constructor-arg name="fileDAO" ref="fileDAO"/>
+    </bean>
+
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="maxUploadSize">
+            <value>20971520</value>
+        </property>
     </bean>
 
 </beans>

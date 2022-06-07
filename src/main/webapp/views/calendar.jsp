@@ -78,6 +78,7 @@
             <div class="calendar_content_container">
                 <h3 class="post_title"></h3>
                 <p class="post_description"></p>
+                <p class="post_deadline"></p>
             </div>
         </div>
     </main>

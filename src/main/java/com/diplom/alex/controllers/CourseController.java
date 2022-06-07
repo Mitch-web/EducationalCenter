@@ -1,7 +1,9 @@
 package com.diplom.alex.controllers;
 
+import com.diplom.alex.model.FileModel;
 import com.diplom.alex.model.PostModel;
 import com.diplom.alex.services.CourseService;
+import com.diplom.alex.services.FileService;
 import com.diplom.alex.services.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 
+import java.nio.charset.StandardCharsets;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -27,6 +30,8 @@ public class CourseController {
     private PostService postService;
     @Autowired
     private CourseService courseService;
+    @Autowired
+    private FileService fileService;
 
     @GetMapping("/math")
     public ModelAndView getMathCourses(HttpServletRequest request) {
@@ -47,9 +52,8 @@ public class CourseController {
     public ModelAndView getPostPage(@PathVariable(value = "id") int id) throws ParseException {
         ModelAndView maw = new ModelAndView("post");
         PostModel postById = postService.getPostById(id);
-        if (postById.getId() ==id) {
-            maw.addObject("post", postById);
-            maw.addObject("timeLeft", getDatesDifferenceInDays(postById.getDeadline()));
+        if (postById.getId() == id) {
+            getAndShowPost(maw, postById);
         } else {
             maw.addObject("incorrectPost", true);
         }
@@ -65,7 +69,7 @@ public class CourseController {
     }
 
     private long getDatesDifferenceInDays(String deadline) throws ParseException {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat sdf = new SimpleDateFormat(DATE_PATTERN);
         if (null != deadline) {
             Date deadlineDate = sdf.parse(deadline);
             Date currentDate = sdf.parse(sdf.format(new Date()));
@@ -73,5 +77,19 @@ public class CourseController {
             return TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
         }
         return -9999L;
+    }
+
+    private void getAndShowPost(ModelAndView maw, PostModel postById) throws ParseException {
+        maw.addObject("post", postById);
+        maw.addObject("timeLeft", getDatesDifferenceInDays(postById.getDeadline()));
+        getAndShowFile(maw, postById);
+    }
+
+    private void getAndShowFile(ModelAndView maw, PostModel postById) {
+        FileModel file = fileService.getFileById(postById.getFileId());
+        if (null != file) {
+            maw.addObject("imageType", file.getContentType());
+            maw.addObject("image", new String(file.getContent(), StandardCharsets.UTF_8));
+        }
     }
 }

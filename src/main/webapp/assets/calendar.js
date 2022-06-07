@@ -47,7 +47,6 @@ async function get_posts() {
     return fetch(addPostUrl, requestOptions)
       .then(response => response.text())
       .then((result) => {
-          console.log(JSON.parse(result));
           response = JSON.parse(result);
       })
       .catch(error => console.log('error', error));
@@ -181,6 +180,7 @@ let view_desc = document.querySelectorAll('tbody tr td');
 
 let post_title = document.querySelector('.post_title');
 let post_description = document.querySelector('.post_description');
+let post_deadline = document.querySelector('.post_deadline');
 
 
 async function getBindedDate(curr_year, curr_month) {
@@ -202,7 +202,8 @@ async function getBindedDate(curr_year, curr_month) {
                     view_desc[i].style.cursor = 'pointer';
 
                     view_desc[i].addEventListener('click', function(e) {
-                        post_container.innerHTML = post_container.innerHTML + `<h3 class="post_title">${result_elem.title}</h3><p class="post_description">${result_elem.subtitle}</p>`;
+                        post_container.innerHTML = post_container.innerHTML +
+                        `<h3 class="post_title">${result_elem.title}</h3><p class="post_description">${result_elem.subtitle}</p><p class="post_deadline">${result_elem.deadline}</p>`;
                     })
                 }
             }

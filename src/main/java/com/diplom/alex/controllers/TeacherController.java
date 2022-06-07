@@ -1,6 +1,7 @@
 package com.diplom.alex.controllers;
 
 import com.diplom.alex.services.PostService;
+import com.diplom.alex.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +19,8 @@ public class TeacherController {
 
     @Autowired
     private PostService postService;
+    @Autowired
+    private UserService userService;
 
     @GetMapping(CABINET)
     public ModelAndView getCabinet() {
@@ -34,6 +37,13 @@ public class TeacherController {
         return new ResponseEntity(
                 postService.getPostsByDate()
                 , HttpStatus.OK);
+    }
+
+    @GetMapping("/students")
+    public ModelAndView getAllStudents() {
+        ModelAndView maw = new ModelAndView("students");
+        maw.addObject("students", userService.getUsers());
+        return maw;
     }
 
 }

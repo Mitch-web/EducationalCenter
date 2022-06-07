@@ -1,6 +1,7 @@
 package com.diplom.alex.services.impl;
 
 import com.diplom.alex.dao.PostDAO;
+import com.diplom.alex.model.FileModel;
 import com.diplom.alex.model.PostModel;
 import com.diplom.alex.services.PostService;
 
@@ -9,6 +10,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+
+import static com.diplom.alex.constants.ApplicationConstants.DATE_PATTERN;
 
 public class PostServiceImpl implements PostService {
 
@@ -50,8 +53,8 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public boolean addNewPost(PostModel post, int courseId) {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+    public boolean addNewPost(PostModel post, int courseId, FileModel file) {
+        SimpleDateFormat sdf = new SimpleDateFormat(DATE_PATTERN);
         Date deadLineDate;
         try {
             deadLineDate = sdf.parse(post.getDeadline());
@@ -61,6 +64,6 @@ public class PostServiceImpl implements PostService {
         } catch (ParseException e) {
             return false;
         }
-        return postDAO.addNewPost(post, courseId);
+        return postDAO.addNewPost(post, courseId, file);
     }
 }

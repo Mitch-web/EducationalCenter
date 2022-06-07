@@ -12,6 +12,7 @@ public class ApplicationConstants {
     public static final String POST_TABLE = "posts";
     public static final String COURSE_TABLE = "courses";
     public static final String COURSE_HAVE_POSTS_TABLE = "courses_have_posts";
+    public static final String FILES_TABLE = "files";
 
     //===PAGES =======================================
     public static final String TEACHER_PAGE = "cabinets/teacher_cabinet";
@@ -32,4 +33,7 @@ public class ApplicationConstants {
     //===ERROR MESSAGES==============================
     public static final String INCORRECT_LOGIN_FORMAT = "Логин указан в неверном формате";
     public static final String USER_NOT_FOUND = "Неправильный логин или пароль";
+
+    //===PATTERNS====================================
+    public static final String DATE_PATTERN = "yyyy-MM-dd";
 }

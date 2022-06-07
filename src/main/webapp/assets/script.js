@@ -56,23 +56,36 @@
     let title_inp = send_project_form.querySelector('input[name="title-inp"]');
     let description_inp = send_project_form.querySelector('textarea[name="description-inp"]');
     let deadline_inp = send_project_form.querySelector('input[name="deadline-inp"]');
+    let file_inp = send_project_form.querySelector('input[name="file_add_foto"]');
 
     send_project_form.addEventListener('submit', function(e) {
         e.preventDefault();
         if (title_inp.value != 0 && description_inp.value != 0) {
             preloadStart('popup_window');
             var myHeaders = new Headers();
-            myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
 
-            var urlencoded = new URLSearchParams();
-            urlencoded.append("title", `${title_inp.value}`);
-            urlencoded.append("subtitle", `${description_inp.value}`);
-            urlencoded.append("deadline", `${deadline_inp.value}`);
+            var formdata = new FormData();
+            formdata.append("title", `${title_inp.value}`);
+            formdata.append("subtitle", `${description_inp.value}`);
+            formdata.append("deadline", `${deadline_inp.value}`);
+            formdata.append("fileType", `${file_inp.files[0].type}`);
+            let blb = new Blob([file_inp.files[0]]);
+            let url = URL.createObjectURL(blb);
+            let reader = new FileReader();
+            reader.readAsDataURL(blb)
+            reader.onloadend = function() {
+            var base64data = reader.result;
+            let str1 = base64data;
+
+            let from1 = str1.search('base64') + 7;
+            let to1 = str1.length;
+            let newstr1 = str1.substr(from1, to1);
+            formdata.append('file', newstr1);
 
             var requestOptions = {
                 method: 'POST',
                 headers: myHeaders,
-                body: urlencoded,
+                body: formdata,
                 redirect: 'follow'
             };
 
@@ -91,8 +104,8 @@
                     popup_window.classList.remove('active');
                     window.location.reload();
                 })
-
             .catch(error => alert(error));
+            }
         } else {
             alert('Введіть дані для створення завдання!');
         }

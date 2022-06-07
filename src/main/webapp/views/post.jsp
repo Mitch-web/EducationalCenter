@@ -26,6 +26,10 @@
                                 <p>Кінцевий термін: ${post.deadline}</p>
                             </c:if>
                             <p>${timeToDeadline}</p>
+                            <c:if test="${image != null}">
+                                <p>Прикріплений файл:</p>
+                                <img src="data:${imageType};base64,${image}" width="450" height="300"/>
+                            </c:if>
                         </div>
                     </c:when>
                     <c:otherwise>

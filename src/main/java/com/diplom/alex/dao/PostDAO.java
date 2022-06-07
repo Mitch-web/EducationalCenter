@@ -1,5 +1,6 @@
 package com.diplom.alex.dao;
 
+import com.diplom.alex.model.FileModel;
 import com.diplom.alex.model.PostModel;
 
 import java.util.List;
@@ -13,5 +14,5 @@ public interface PostDAO {
     List<PostModel> getPostsByCourse(String courseName);
     List<PostModel> getPostsByDeadline(String deadline);
     List<PostModel> getPostsByDate();
-    boolean addNewPost(PostModel post, int courseId);
+    boolean addNewPost(PostModel post, int courseId, FileModel file);
 }
