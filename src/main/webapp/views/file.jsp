@@ -1,0 +1,1 @@
+<img src="data:${imageType};base64,${image}"/>
