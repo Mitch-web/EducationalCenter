@@ -17,34 +17,34 @@
                     <div class="auth_company_logo">
                         <!--<img src="#" >-->
                     </div>
-                    <p class="auth_text">Авторизация</p>
+                    <p class="auth_text">Вхід</p>
                     <form:form class="auth_form" name="loginForm">
-                        <label class="login_text">Логин</label><br>
-                        <input type="text" class="login_inp" placeholder="Ваш логин" name="login"><br>
+                        <label class="login_text">Логін</label><br>
+                        <input type="text" class="login_inp" placeholder="Ваш логін" name="login"><br>
                         <label class="pass_text">Пароль</label>
                         <div class="passwordInpButton_cont">
                             <input type="password" class="pass_inp" placeholder="Ваш пароль" name="password">
-                            <div onclick="sendAuthData()" class="post_button">Вход</div>
+                            <div onclick="sendAuthData()" class="post_button">Вхід</div>
                         </div>
                         <input name="auth_remember" type="checkbox" class="auth_remember_inp" />
-                        <label for="auth_remember" class="auth_remember">Запомнить меня на этом компьютере</label><br>
+                        <label for="auth_remember" class="auth_remember">Запам`ятати мене на цьому компьютері</label><br>
                     </form:form>
-                    <input class="add_new_employee" type="submit" value="Зарегистрироваться" />
+                    <input class="add_new_employee" type="submit" value="Зареєструватись" />
                 </div>
             </div>
 
             <div class="add_new_employee_popup">
                 <form:form id="reg" class="form" name="newUser">
                     <p class="close_employee_add_popup">х</p>
-                    <label for="employee_name">Введите имя:</label>
+                    <label for="employee_name">Введіть ім`я:</label>
                     <input type="text" name="employee_name" class="employee_name" />
-                    <label for="employee_name">Введите фамилию:</label>
+                    <label for="employee_name">Введіть прізвище:</label>
                     <input type="text" name="employee_lastname" class="employee_lastname" />
-                    <label for="login">Придумайте логин:</label>
+                    <label for="login">Придумайте логін:</label>
                     <input type="text" name="login" class="login" />
                     <label for="password">Придумайте пароль:</label>
                     <input type="password" name="password" class="password" />
-                    <input class="add_new_employee_but" type="submit" value="Зарегистрироваться" />
+                    <input class="add_new_employee_but" type="submit" value="Зареєструватись" />
                 </form:form>
             </div>
 
