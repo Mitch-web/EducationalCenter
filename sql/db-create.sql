@@ -28,8 +28,12 @@ CREATE TABLE IF NOT EXISTS users
     role_id int not null,
     first_name varchar(35) NOT NULL,
     last_name varchar(35) NOT NULL,
+    group_id int not null,
     FOREIGN KEY (role_id)
         REFERENCES roles(id)
+        ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (group_id)
+        REFERENCES groups(id)
         ON DELETE CASCADE ON UPDATE CASCADE,
     PRIMARY KEY (id)
 );
@@ -37,6 +41,17 @@ CREATE TABLE IF NOT EXISTS users
 -- INSERT VALUES TO USERS
 INSERT INTO users(login, password, role_id, first_name, last_name) VALUES ('admin', 'admin', 0, 'Admin', 'Lastivka');
 INSERT INTO users(login, password, role_id, first_name, last_name) VALUES ('student', 'student', 1, 'Student', 'Hardworker');
+
+SET foreign_key_checks = 0;
+drop table if exists groups;
+SET foreign_key_checks = 1;
+
+create table if not exists groups
+(
+    id int auto_increment,
+    name varchar(30) NOT NULL unique,
+    PRIMARY KEY(id)
+)
 
 SET foreign_key_checks = 0;
 drop table if exists courses;

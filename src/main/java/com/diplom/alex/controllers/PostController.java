@@ -24,15 +24,13 @@ public class PostController {
     @Autowired
     private FileService fileService;
 
-    @PostMapping(value = "/*/add-post", produces = "text/plain;charset=UTF-8")
-    public ResponseEntity<Object> addNewPost(HttpServletRequest request, String title,
+    @PostMapping(value = "/{courseName}/add-post", produces = "text/plain;charset=UTF-8")
+    public ResponseEntity<Object> addNewPost(@PathVariable String courseName, String title,
                                              String subtitle, String deadline,
                                              String fileType, String file) {
-        String[] params = request.getRequestURI().split("/");
-        String courseName = courseService.getCourseNameByParam(params[3]);
         FileModel fileToUpload = getFileOrEmpty(file, fileType);
         return postService.addNewPost(createAndPopulatePost(title, subtitle, deadline),
-                courseService.getByName(courseName).getId(), fileToUpload)
+                courseService.getByName(courseService.getCourseNameByParam(courseName)).getId(), fileToUpload)
                 ? ResponseEntity.ok().build()
                 : ResponseEntity.badRequest().body("Wrong");
     }

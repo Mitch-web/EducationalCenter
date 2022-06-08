@@ -3,7 +3,6 @@ package com.diplom.alex.services.impl;
 import com.diplom.alex.dao.FileDao;
 import com.diplom.alex.model.FileModel;
 import com.diplom.alex.services.FileService;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Base64;
 

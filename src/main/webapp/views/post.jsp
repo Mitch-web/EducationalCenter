@@ -28,7 +28,19 @@
                             <p>${timeToDeadline}</p>
                             <c:if test="${image != null}">
                                 <p>Прикріплений файл:</p>
-                                <img src="data:${imageType};base64,${image}" width="450" height="300"/>
+                                <img src="data:${imageType};base64,${image}" width="350" height="200"/>
+                                <a href="#" class="add_homework_container">
+                                    <p class="add_homework_text" style="font-size: 20; color: #115571;">Здати роботу</p>
+                                </a>
+                                <div class="popup_window">
+                                    <p class="close">X</p>
+                                    <form action="#" id="add_homework_form">
+                                        <label>Додати файл</label>
+                                        <input type="file" name="file_add_homework">
+                                        <input type="submit" value="Відправити">
+                                    </form>
+                                </div>
+                                <!--<img src="data:${homeworkType};base64,${homeworkImage}" width="250" height="100"/>-->
                             </c:if>
                         </div>
                     </c:when>
@@ -52,6 +64,7 @@
         <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
         <script src="/assets/settings.js"></script>
         <script src="/assets/script.js"></script>
+        <script src="/assets/send_homework.js"></script>
 </body>
 
 </html>
