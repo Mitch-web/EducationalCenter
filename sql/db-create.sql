@@ -103,9 +103,41 @@ CREATE TABLE IF NOT EXISTS files
 (
     id int auto_increment,
     content_type varchar(30) NOT NULL,
-    content blob NOT NULL,
+    content mediumblob NOT NULL,
     PRIMARY KEY(id)
-)
+);
+
+SET foreign_key_checks = 0;
+DROP TABLE IF EXISTS homeworks;
+SET foreign_key_checks = 1;
+
+CREATE TABLE IF NOT EXISTS homeworks
+(
+    id int auto_increment,
+    content_type varchar(30) NOT NULL,
+    content mediumblob NOT NULL,
+    PRIMARY KEY(id)
+);
+
+SET foreign_key_checks = 0;
+DROP TABLE IF EXISTS users_have_posts;
+SET foreign_key_checks = 1;
+
+CREATE TABLE IF NOT EXISTS users_have_posts
+(
+    user_id int not null,
+    foreign key (user_id)
+        references users(id)
+        on delete cascade on update no action,
+    post_id int not null,
+    foreign key (post_id)
+        references posts(id)
+        on delete cascade on update no action,
+    homework_id int not null,
+    foreign key (homework_id)
+        references homeworks(id)
+        on delete cascade on update no action
+);
 
 SET foreign_key_checks = 0;
 drop table if exists courses_have_posts;

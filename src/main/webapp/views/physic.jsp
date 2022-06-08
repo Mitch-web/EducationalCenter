@@ -11,7 +11,7 @@
             <div class="content_side">
                 <h2 class="course_title">Фізика</h2>
                 <c:forEach var="post" items="${posts}">
-                    <a href="#" class="course_list_item">
+                    <a href="${requestUri}/posts/${post.id}" class="course_list_item">
                         <h3 class="course_item_title">${post.title}</h3>
                         <p class="course_item_subtitle">${post.subtitle}</p>
                     </a>

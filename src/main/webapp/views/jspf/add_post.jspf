@@ -10,6 +10,6 @@
         <input type="file" name="file_add_foto" id="file_add_foto">
         <label>Дедлайн</label>
         <input type="date" name="deadline-inp">
-        <input type="submit" value="Отправить">
+        <input type="submit" value="Відправити">
     </form>
 </div>

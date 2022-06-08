@@ -66,8 +66,10 @@ public class PostDAOImpl implements PostDAO {
     public List<PostModel> getPostsByDate() {
         SimpleDateFormat sdf = new SimpleDateFormat(DATE_PATTERN);
         String currentDate = sdf.format(new Date());
+        BeanPropertyRowMapper<PostModel> rowMapper = new BeanPropertyRowMapper<>(PostModel.class);
+        rowMapper.setPrimitivesDefaultedForNullValue(true);
         return jdbcTemplate.query(String.format("SELECT * FROM %s WHERE DATE(deadline) >= DATE('%s')", POST_TABLE, currentDate),
-                new BeanPropertyRowMapper<>(PostModel.class));
+                rowMapper);
     }
 
     @Override
