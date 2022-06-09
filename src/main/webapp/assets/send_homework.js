@@ -2,6 +2,7 @@ const add_homework_container = document.querySelector('.add_homework_container')
 const popup_window = document.querySelector('.popup_window');
 const close = document.querySelector('.close');
 
+if (add_homework_container != null) {
 add_homework_container.addEventListener('click', () => {
     popup_window.classList.add('active');
 });
@@ -53,3 +54,4 @@ send_homework_form.addEventListener('submit', function(e) {
         alert('Файл не був завантажений!');
     }
 });
+}

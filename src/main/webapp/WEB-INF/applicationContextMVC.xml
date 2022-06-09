@@ -47,6 +47,8 @@
 
     <bean id="homeworkDAO" class="com.diplom.alex.dao.impl.HomeworkDAOImpl"/>
 
+    <bean id="groupDAO" class="com.diplom.alex.dao.impl.GroupDAOImpl"/>
+
     <!--===SERVICES===========================-->
     <bean id="userService" class="com.diplom.alex.services.impl.UserServiceImpl">
         <constructor-arg name="userDAO" ref="userDAO"/>
@@ -70,6 +72,10 @@
 
     <bean id="homeworkService" class="com.diplom.alex.services.impl.HomeworkServiceImpl">
         <constructor-arg name="homeworkDAO" ref="homeworkDAO"/>
+    </bean>
+
+    <bean id="groupdService" class="com.diplom.alex.services.impl.GroupServiceImpl">
+        <constructor-arg name="groupDAO" ref="groupDAO"/>
     </bean>
 
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">

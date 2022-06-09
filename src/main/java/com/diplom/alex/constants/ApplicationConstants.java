@@ -15,6 +15,8 @@ public class ApplicationConstants {
     public static final String FILES_TABLE = "files";
     public static final String HOMEWORKS_TABLE = "homeworks";
     public static final String USERS_HAVE_POSTS_TABLE = "users_have_posts";
+    public static final String GROUPS_TABLE = "`groups`";
+    public static final String COURSES_HAVE_USERS_TABLE = "courses_have_users";
 
     //===PAGES =======================================
     public static final String TEACHER_PAGE = "cabinets/teacher_cabinet";

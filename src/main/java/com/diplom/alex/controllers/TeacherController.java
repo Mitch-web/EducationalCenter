@@ -1,5 +1,7 @@
 package com.diplom.alex.controllers;
 
+import com.diplom.alex.model.UserModel;
+import com.diplom.alex.services.CourseService;
 import com.diplom.alex.services.PostService;
 import com.diplom.alex.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import static com.diplom.alex.constants.ApplicationConstants.*;
 
@@ -21,6 +24,8 @@ public class TeacherController {
     private PostService postService;
     @Autowired
     private UserService userService;
+    @Autowired
+    private CourseService courseService;
 
     @GetMapping(CABINET)
     public ModelAndView getCabinet() {
@@ -33,7 +38,7 @@ public class TeacherController {
     }
 
     @GetMapping("/calendar/posts")
-    @ResponseBody public ResponseEntity getCalendarPosts(HttpServletRequest request) {
+    @ResponseBody public ResponseEntity getCalendarPosts() {
         return new ResponseEntity(
                 postService.getPostsByDate()
                 , HttpStatus.OK);

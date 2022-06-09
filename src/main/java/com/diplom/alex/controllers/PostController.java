@@ -11,8 +11,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
-
 @Controller
 @RequestMapping(value = "/teacher/courses", produces = "text/html; charset=UTF-8")
 public class PostController {
@@ -24,13 +22,12 @@ public class PostController {
     @Autowired
     private FileService fileService;
 
-    @PostMapping(value = "/{courseName}/add-post", produces = "text/plain;charset=UTF-8")
-    public ResponseEntity<Object> addNewPost(@PathVariable String courseName, String title,
+    @PostMapping(value = "/{courseId}/add-post", produces = "text/plain;charset=UTF-8")
+    public ResponseEntity<Object> addNewPost(@PathVariable int courseId, String title,
                                              String subtitle, String deadline,
                                              String fileType, String file) {
         FileModel fileToUpload = getFileOrEmpty(file, fileType);
-        return postService.addNewPost(createAndPopulatePost(title, subtitle, deadline),
-                courseService.getByName(courseService.getCourseNameByParam(courseName)).getId(), fileToUpload)
+        return postService.addNewPost(createAndPopulatePost(title, subtitle, deadline), courseId, fileToUpload)
                 ? ResponseEntity.ok().build()
                 : ResponseEntity.badRequest().body("Wrong");
     }

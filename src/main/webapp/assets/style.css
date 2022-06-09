@@ -200,6 +200,7 @@ aside .courses_container {
 
 aside .courses_container a {
     display: flex;
+    padding-left: 40px;
     align-items: center;
     justify-content: center;
     margin-top: 20px;
@@ -212,6 +213,7 @@ aside .courses_container a {
 aside .courses_container a svg {
     padding-right: 20px;
     transition: 0.5s;
+    min-width: 52px;
 }
 
 aside .courses_container a:hover svg {

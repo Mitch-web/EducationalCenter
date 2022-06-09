@@ -74,15 +74,15 @@
                 let blb = new Blob([file_inp.files[0]]);
                 let url = URL.createObjectURL(blb);
                 let reader = new FileReader();
-                reader.readAsDataURL(blb)
+                reader.readAsDataURL(blb);
                 reader.onloadend = function() {
-                var base64data = reader.result;
-                let str1 = base64data;
+                    var base64data = reader.result;
+                    let str1 = base64data;
 
-                let from1 = str1.search('base64') + 7;
-                let to1 = str1.length;
-                let newstr1 = str1.substr(from1, to1);
-                formdata.append('file', newstr1);
+                    let from1 = str1.search('base64') + 7;
+                    let to1 = str1.length;
+                    let newstr1 = str1.substr(from1, to1);
+                    formdata.append('file', newstr1);
 
                 var requestOptions = {
                     method: 'POST',
@@ -93,6 +93,7 @@
 
                 var addPostUrl = window.location.href;
                 addPostUrl = addPostUrl.replace("#", "") + "/add-post";
+                console.log(addPostUrl);
 
                 fetch(addPostUrl, requestOptions)
                     .then(response => {

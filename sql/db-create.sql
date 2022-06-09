@@ -50,8 +50,8 @@ create table if not exists groups
 (
     id int auto_increment,
     name varchar(30) NOT NULL unique,
-    PRIMARY KEY(id)
-)
+    PRIMARY KEY (id)
+);
 
 SET foreign_key_checks = 0;
 drop table if exists courses;
@@ -75,7 +75,7 @@ SET foreign_key_checks = 1;
 
 create table if not exists courses_have_users
 (
-    user_id int not null unique,
+    user_id int not null,
     foreign key (user_id)
         references users(id)
         on delete no action on update no action ,

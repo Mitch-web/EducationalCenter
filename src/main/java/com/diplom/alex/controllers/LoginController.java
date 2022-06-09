@@ -3,6 +3,7 @@ package com.diplom.alex.controllers;
 import com.diplom.alex.model.LoginForm;
 import com.diplom.alex.model.RoleModel;
 import com.diplom.alex.model.UserModel;
+import com.diplom.alex.services.CourseService;
 import com.diplom.alex.services.RoleService;
 import com.diplom.alex.services.UserService;
 
@@ -20,13 +21,15 @@ import static com.diplom.alex.constants.ApplicationConstants.*;
 
 @Controller
 @RequestMapping(produces = "text/html; charset=UTF-8")
-@SessionAttributes({"user","role"})
+@SessionAttributes({"user","role","courses"})
 public class LoginController {
 
     @Autowired
     private UserService userService;
     @Autowired
     private RoleService roleService;
+    @Autowired
+    private CourseService courseService;
 
     @PostMapping("/login")
     public @ResponseBody ResponseEntity<Object> login(@ModelAttribute("loginForm") @Valid LoginForm loginForm, HttpSession session,
@@ -41,8 +44,10 @@ public class LoginController {
             return ResponseEntity.badRequest()
                     .body(USER_NOT_FOUND);
         }
+
         model.addAttribute("user", userModel);
         model.addAttribute("role", RoleModel.getRole(userModel).getName());
+        model.addAttribute("courses", courseService.getByUserId(userModel.getId()));
         return ResponseEntity.ok(String.format("/%s%s", RoleModel.getRole(userModel).getName(), CABINET));
     }
 

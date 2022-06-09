@@ -10,5 +10,6 @@ public interface CourseDAO {
     List<CourseModel> getAllCourses();
     Optional<CourseModel> getByName(String name);
     Optional<CourseModel> getById(int id);
+    List<CourseModel> getByUserId(int userId);
 
 }

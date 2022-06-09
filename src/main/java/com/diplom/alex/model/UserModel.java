@@ -11,5 +11,6 @@ public class UserModel {
     private int roleId;
     private String firstName;
     private String lastName;
+    private int groupId;
 
 }

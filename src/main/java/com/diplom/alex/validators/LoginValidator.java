@@ -8,7 +8,7 @@ import java.util.regex.Pattern;
 
 public class LoginValidator implements ConstraintValidator<LoginMatch, String> {
 
-    private static final String LOGIN_PATTERN = "^[a-zA-Z\\d]+$";
+    private static final String LOGIN_PATTERN = "^[a-zA-Z\\d._,]+$";
 
     @Override
     public void initialize(LoginMatch constraintAnnotation) {

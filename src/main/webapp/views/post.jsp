@@ -16,7 +16,7 @@
         <main>
             <%@ include file="jspf/course_list.jspf" %>
             <div class="content_side">
-                <h2 class="course_title">Завдання з курсу 'Математика'</h2>
+                <h2 class="course_title">Завдання з курсу '${course.name}'</h2>
                 <c:choose>
                     <c:when test="${!incorrectPost}">
                         <div class="course_list_item" style="margin-top: 60px;">
@@ -29,9 +29,11 @@
                             <c:if test="${image != null}">
                                 <p>Прикріплений файл:</p>
                                 <img src="data:${imageType};base64,${image}" width="350" height="200"/>
-                                <a href="#" class="add_homework_container">
-                                    <p class="add_homework_text" style="font-size: 20; color: #115571;">Здати роботу</p>
-                                </a>
+                                <c:if test="${role == student}">
+                                    <a href="#" class="add_homework_container">
+                                        <p class="add_homework_text" style="font-size: 20; color: #115571;">Здати роботу</p>
+                                    </a>
+                                </c:if>
                                 <div class="popup_window">
                                     <p class="close">X</p>
                                     <form action="#" id="add_homework_form">

@@ -9,5 +9,6 @@ public interface CourseService {
     List<CourseModel> getAllCourses();
     CourseModel getByName(String name);
     CourseModel getById(int id);
+    List<CourseModel> getByUserId(int userId);
     String getCourseNameByParam(String param);
 }

@@ -35,6 +35,11 @@ public class CourseServiceImpl implements CourseService {
     }
 
     @Override
+    public List<CourseModel> getByUserId(int userId) {
+        return courseDAO.getByUserId(userId);
+    }
+
+    @Override
     public String getCourseNameByParam(String param) {
         return coursesNames.get(param);
     }

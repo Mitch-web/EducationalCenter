@@ -1,5 +1,6 @@
 package com.diplom.alex.controllers;
 
+import com.diplom.alex.model.CourseModel;
 import com.diplom.alex.model.FileModel;
 import com.diplom.alex.model.PostModel;
 import com.diplom.alex.services.CourseService;
@@ -33,38 +34,27 @@ public class CourseController {
     @Autowired
     private FileService fileService;
 
-    @GetMapping("/math")
-    public ModelAndView getMathCourses(HttpServletRequest request) {
-        return createAndPopulateModel(MATH_PAGE, MATH, request);
+    @GetMapping("/{courseId}")
+    public ModelAndView getMathCourses(HttpServletRequest request, @PathVariable int courseId) {
+        ModelAndView maw = new ModelAndView("course_page");
+        CourseModel course = courseService.getById(courseId);
+        maw.addObject("course", course);
+        maw.addObject("posts", postService.getPostsByCourse(course.getName()));
+        maw.addObject("requestUri", request.getRequestURI());
+        return maw;
     }
 
-    @GetMapping("/physic")
-    public ModelAndView getPhysicsCourses(HttpServletRequest request) {
-        return createAndPopulateModel(PHYSIC_PAGE, PHYSIC, request);
-    }
-
-    @GetMapping("/chemistry")
-    public ModelAndView getChemistryCourses(HttpServletRequest request) {
-        return createAndPopulateModel(CHEMISTRY_PAGE, CHEMISTRY, request);
-    }
-
-    @GetMapping("/*/posts/{id}")
-    public ModelAndView getPostPage(@PathVariable(value = "id") int id) throws ParseException {
+    @GetMapping("/{courseId}/posts/{id}")
+    public ModelAndView getPostPage(@PathVariable(value = "id") int id, @PathVariable(value = "courseId") int courseId)
+                                                                                                throws ParseException {
         ModelAndView maw = new ModelAndView("post");
         PostModel postById = postService.getPostById(id);
         if (postById.getId() == id) {
+            maw.addObject("course", courseService.getById(courseId));
             getAndShowPost(maw, postById);
         } else {
             maw.addObject("incorrectPost", true);
         }
-        return maw;
-    }
-
-    private ModelAndView createAndPopulateModel(String page, String param, HttpServletRequest request) {
-        ModelAndView maw = new ModelAndView(page);
-        String courseName = courseService.getCourseNameByParam(param);
-        maw.addObject("posts", postService.getPostsByCourse(courseName));
-        maw.addObject("requestUri", request.getRequestURI());
         return maw;
     }
 
