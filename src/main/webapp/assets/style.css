@@ -453,6 +453,12 @@ li {
     width: 100%;
 }
 
+.marks_list_elems {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+}
+
 .marks_list_container ul .marks_list_elems p:nth-child(1) {
     width: 10%;
 }
