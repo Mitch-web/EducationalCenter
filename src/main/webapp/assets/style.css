@@ -453,29 +453,29 @@ li {
     width: 100%;
 }
 
-.marks_list_container ul li p:nth-child(1) {
+.marks_list_container ul .marks_list_elems p:nth-child(1) {
     width: 10%;
 }
 
-.marks_list_container ul li p:nth-child(2) {
+.marks_list_container ul .marks_list_elems p:nth-child(2) {
     width: 35%
 }
 
-.marks_list_container ul li p:nth-child(3) {
+.marks_list_container ul .marks_list_elems p:nth-child(3) {
     width: 25%;
 }
 
-.marks_list_container ul li p:nth-child(4) {
+.marks_list_container ul .marks_list_elems p:nth-child(4) {
     width: 10%;
 }
 
-.marks_list_container ul li .check_mark_btn {
+.marks_list_container ul .marks_list_elems .check_mark_btn {
     width: 20%;
     display: flex;
     align-items: center;
 }
 
-.marks_list_container ul li .check_mark_btn button {
+.marks_list_container ul .marks_list_elems .check_mark_btn button {
     width: 80%;
     border-radius: 100px;
     color: #000;

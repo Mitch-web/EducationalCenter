@@ -63,7 +63,7 @@
                                                                         <p>Завдання</p>
                                                                         <p>Оцинка</p>
                                                                     </li>
-                                                                    <li>
+                                                                    <li class="marks_list_elems">
                                                                         <p>КН-15</p>
                                                                         <p>Стоволос Алексей Батькович</p>
                                                                         <p>homework.docx</p>
