@@ -454,6 +454,10 @@ li {
     text-align: center;
 }
 
+.mark_value input {
+    width: 100%;
+}
+
 .marks_list_container ul {
     display: flex;
     flex-direction: column;
