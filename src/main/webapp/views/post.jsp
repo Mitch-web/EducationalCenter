@@ -56,24 +56,24 @@
                                                                 <p>Оцінка</p>
                                                             </li>
                                                             <c:forEach var="userMarking" items="${userMarkings}">
-                                                            <li class="marks_list_elems" data-id="${userMarking.id}">
-                                                                <p>${userMarking.name}</p>
-                                                                <p>${userMarking.lastName} ${userMarking.firstName}</p>
-                                                                <p>${userMarking.fileName}</p>
-                                                                <c:choose>
-                                                                    <c:when test="${userMarking.mark != 0}">
-                                                                        <p>${userMarking.mark}</p>
-                                                                    </c:when>
-                                                                    <c:otherwise>
-                                                                        <div class="mark_value">
-                                                                            <input type="number">
-                                                                        </div>
-                                                                        <div class="check_mark_btn">
-                                                                            <button>Оцінити</button>
-                                                                        </div>
-                                                                    </c:otherwise>
-                                                                </c:choose>
-                                                            </li>
+                                                                <li class="marks_list_elems" data-id="${userMarking.id}">
+                                                                    <p>${userMarking.name}</p>
+                                                                    <p>${userMarking.lastName} ${userMarking.firstName}</p>
+                                                                    <p>${userMarking.fileName}</p>
+                                                                    <c:choose>
+                                                                        <c:when test="${userMarking.mark != 0}">
+                                                                            <p>${userMarking.mark}</p>
+                                                                        </c:when>
+                                                                        <c:otherwise>
+                                                                            <div class="mark_value">
+                                                                                <input type="number">
+                                                                            </div>
+                                                                            <div class="check_mark_btn">
+                                                                                <button>Оцінити</button>
+                                                                            </div>
+                                                                        </c:otherwise>
+                                                                    </c:choose>
+                                                                </li>
                                                             </c:forEach>
                                                         </ul>
                                                     </div>
@@ -108,6 +108,41 @@
                         show_students_list.addEventListener('click', function() {
                             ul_list.classList.toggle('active');
                         });
+                        //add mark func
+
+                        let students_works = document.querySelectorAll('.marks_list_elems');
+                        for (let work_container of students_works) {
+                            if (work_container.querySelector('.check_mark_btn button')) {
+                                let studentId = work_container.getAttribute('data-id');
+                                let estimate_but = work_container.querySelector('.check_mark_btn button');
+                                let mark = work_container.querySelector('.mark_value input');
+                                let current_url = window.location.href;
+                                estimate_but.addEventListener('click', function() {
+                                    if (mark.value == '') {
+                                        alert('Поставьте оценку');
+                                    } else if (Number(mark.value) < 1 || Number(mark.value) > 5) {
+                                        alert('Поставьте оценку от 1 до 5');
+                                    } else {
+                                        var settings = {
+                                            "url": url,
+                                            "method": "POST",
+                                            "timeout": 0,
+                                            "headers": {
+                                                "Content-Type": "application/x-www-form-urlencoded"
+                                            },
+                                            "data": {
+                                                "userId": Number(studentId),
+                                                "mark": Number(mark.value)
+                                            }
+                                        };
+
+                                        $.ajax(settings).done(function(response) {
+                                            console.log(response);
+                                        });
+                                    }
+                                });
+                            }
+                        }
                     </script>
             </body>
 
