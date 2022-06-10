@@ -45,63 +45,38 @@
                                             </div>
                                             <!--<img src="data:${homeworkType};base64,${homeworkImage}" width="250" height="100"/>-->
                                             <c:if test="${role == 'teacher'}">
-                                                <div>
-                                                    <c:forEach var="userMarking" items="${userMarkings}">
-                                                        <c:if test="${userMarking.mark == 0}">
-                                                            <c:set var="mark" value="Не оцінено" />
-                                                        </c:if>
-                                                        <c:if test="${userMarking.mark != 0}">
-                                                            <c:set var="mark" value="Завдання не має терміну" />
-                                                        </c:if>
-                                                        <div class="marks_content_container">
-                                                            <p class="show_students_list">Показати список задач</p>
-                                                            <div class="marks_list_container">
-                                                                <ul>
-                                                                    <li class="marks_list_titles">
-                                                                        <p>Группа</p>
-                                                                        <p>ФИО</p>
-                                                                        <p>Завдання</p>
-                                                                        <p>Оцинка</p>
-                                                                    </li>
-                                                                    <li class="marks_list_elems" data-id="234325245423">
-                                                                        <p>КН-15</p>
-                                                                        <p>Стоволос Алексей Батькович</p>
-                                                                        <p>homework.docx</p>
+                                                <div class="marks_content_container">
+                                                    <p class="show_students_list">Показати список студентів</p>
+                                                    <div class="marks_list_container">
+                                                        <ul>
+                                                            <li class="marks_list_titles">
+                                                                <p>Группа</p>
+                                                                <p>ПІБ</p>
+                                                                <p>Завдання</p>
+                                                                <p>Оцінка</p>
+                                                            </li>
+                                                            <c:forEach var="userMarking" items="${userMarkings}">
+                                                            <li class="marks_list_elems" data-id="${userMarking.id}">
+                                                                <p>${userMarking.name}</p>
+                                                                <p>${userMarking.lastName} ${userMarking.firstName}</p>
+                                                                <p>${userMarking.fileName}</p>
+                                                                <c:choose>
+                                                                    <c:when test="${userMarking.mark != 0}">
+                                                                        <p>${userMarking.mark}</p>
+                                                                    </c:when>
+                                                                    <c:otherwise>
                                                                         <div class="mark_value">
                                                                             <input type="number">
                                                                         </div>
                                                                         <div class="check_mark_btn">
-                                                                            <button>Оциныты</button>
+                                                                            <button>Оцінити</button>
                                                                         </div>
-                                                                    </li>
-                                                                    <li class="marks_list_elems">
-                                                                        <p>КН-15</p>
-                                                                        <p>Стоволос Алексей Батькович</p>
-                                                                        <p>homework.docx</p>
-                                                                        <div class="mark_value">
-                                                                            <input type="number">
-                                                                        </div>
-                                                                        <div class="check_mark_btn">
-                                                                            <button>Оциныты</button>
-                                                                        </div>
-                                                                    </li>
-                                                                    <li class="marks_list_elems">
-                                                                        <p>КН-15</p>
-                                                                        <p>Стоволос Алексей Батькович</p>
-                                                                        <p>homework.docx</p>
-                                                                        <div class="mark_value">
-                                                                            <p>5</p>
-                                                                        </div>
-                                                                        <div class="check_mark_btn">
-
-                                                                        </div>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                        <!-- <p>${userMarking.name}, ${userMarking.firstName}, ${userMarking.lastName}, ${userMarking.contentType}, ${mark}
-                                                            <input</p>-->
-                                                    </c:forEach>
+                                                                    </c:otherwise>
+                                                                </c:choose>
+                                                            </li>
+                                                            </c:forEach>
+                                                        </ul>
+                                                    </div>
                                                 </div>
                                             </c:if>
                                         </div>

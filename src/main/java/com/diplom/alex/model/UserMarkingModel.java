@@ -9,11 +9,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class UserMarkingModel {
 
-    private int userId;
+    private int id;
     private String name;
     private String firstName;
     private String lastName;
-    private String contentType;
+    private String fileName;
     private int mark;
 
 }

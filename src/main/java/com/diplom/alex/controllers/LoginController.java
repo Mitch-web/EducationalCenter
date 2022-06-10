@@ -54,6 +54,7 @@ public class LoginController {
     @PostMapping("/registration")
     public ResponseEntity<Object> addUser(@ModelAttribute("newUser") UserModel user) {
         user.setRoleId(roleService.getIdByName("student"));
+        user.setGroupId(0);
         userService.createUser(user);
         return ResponseEntity.ok(MAIN_PAGE);
     }
