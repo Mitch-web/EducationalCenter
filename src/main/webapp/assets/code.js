@@ -88,6 +88,7 @@ function add_new_empl() {
         let employee_lastname = document.querySelector('.employee_lastname');
         let employee_login = document.querySelector('.login');
         let employee_password = document.querySelector('.password');
+        let add_new_select = document.querySelector('.add_new_select');
         if (employee_name.value == '' || employee_lastname.value == '' || employee_login.value == '' || employee_password.value == '') {
             preloadEnd('add_new_employee_popup');
             alert('Заполните все поля!');
@@ -106,7 +107,8 @@ function add_new_empl() {
                     "login": `${employee_login.value}`,
                     "password": `${employee_password.value}`,
                     "firstName": `${employee_name.value}`,
-                    "lastName": `${employee_lastname.value}`
+                    "lastName": `${employee_lastname.value}`,
+                    "groupName": `${add_new_select.value}`
                 },
                 success: function(response) {
                     preloadEnd('add_new_employee_popup');
