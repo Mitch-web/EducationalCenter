@@ -70,7 +70,7 @@ public class CourseController {
     @PostMapping("/{courseId}/posts/{id}")
     public ResponseEntity<Object> postMark(@PathVariable("id") int id, int userId, int mark) {
         return homeworkService.updateWithMark(id, userId, mark)
-                ? ResponseEntity.ok().build()
+                ? ResponseEntity.ok().body(mark)
                 : ResponseEntity.badRequest().body("Виникла помилка в процесі виконання запиту");
     }
 
