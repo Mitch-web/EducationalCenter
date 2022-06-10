@@ -45,7 +45,7 @@ public class StudentController {
 
     @PostMapping("/courses/*/posts/{postId}/add-homework")
     public ResponseEntity addHomeWorkFile(HttpSession session, @PathVariable int postId,
-                                          String fileType, String file) {
+                                          String fileType, String fileName, String file) {
         if (null != file) {
             UserModel currentUser = (UserModel) session.getAttribute("user");
             HomeworkModel homeworkToUpload = new HomeworkModel(0, fileType, file.getBytes(), (short) 0);

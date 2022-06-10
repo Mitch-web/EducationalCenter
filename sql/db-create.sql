@@ -151,7 +151,8 @@ CREATE TABLE IF NOT EXISTS users_have_posts
     homework_id int not null,
     foreign key (homework_id)
         references homeworks(id)
-        on delete cascade on update no action
+        on delete cascade on update no action,
+    mark int null
 );
 
 SET foreign_key_checks = 0;

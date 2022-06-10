@@ -1,6 +1,6 @@
 package com.diplom.alex.dao;
 
-import com.diplom.alex.model.CourseModel;
+import com.diplom.alex.model.UserMarkingModel;
 import com.diplom.alex.model.UserModel;
 
 import java.util.List;
@@ -11,6 +11,6 @@ public interface UserDAO {
     Optional<UserModel> getUserById(int id);
     Optional<UserModel> getUserByLogin(String login);
     List<UserModel> getUsers();
-    //List<UserModel> getUsersByCourse(CourseModel course);
+    List<UserMarkingModel> getByPostId(int postId);
     void createUser(UserModel user);
 }

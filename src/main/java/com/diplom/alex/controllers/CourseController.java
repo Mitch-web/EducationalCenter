@@ -6,6 +6,7 @@ import com.diplom.alex.model.PostModel;
 import com.diplom.alex.services.CourseService;
 import com.diplom.alex.services.FileService;
 import com.diplom.alex.services.PostService;
+import com.diplom.alex.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,6 +28,8 @@ import static com.diplom.alex.constants.ApplicationConstants.*;
 @RequestMapping("*/courses")
 public class CourseController {
 
+    @Autowired
+    private UserService userService;
     @Autowired
     private PostService postService;
     @Autowired
@@ -51,6 +54,7 @@ public class CourseController {
         PostModel postById = postService.getPostById(id);
         if (postById.getId() == id) {
             maw.addObject("course", courseService.getById(courseId));
+            maw.addObject("userMarkings", userService.getByPostId(id));
             getAndShowPost(maw, postById);
         } else {
             maw.addObject("incorrectPost", true);

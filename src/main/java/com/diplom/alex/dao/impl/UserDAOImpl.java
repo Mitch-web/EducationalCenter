@@ -1,6 +1,7 @@
 package com.diplom.alex.dao.impl;
 
 import com.diplom.alex.dao.UserDAO;
+import com.diplom.alex.model.UserMarkingModel;
 import com.diplom.alex.model.UserModel;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -8,7 +9,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import java.util.List;
 import java.util.Optional;
 
-import static com.diplom.alex.constants.ApplicationConstants.USER_TABLE;
+import static com.diplom.alex.constants.ApplicationConstants.*;
 
 public class UserDAOImpl implements UserDAO {
 
@@ -34,6 +35,17 @@ public class UserDAOImpl implements UserDAO {
     public List<UserModel> getUsers() {
         return jdbcTemplate.query(String.format("SELECT * FROM %s", USER_TABLE),
                 new BeanPropertyRowMapper<>(UserModel.class));
+    }
+
+    @Override
+    public List<UserMarkingModel> getByPostId(int postId) {
+        String selectQuery = "SELECT g.name, u.first_name, u.last_name, h.content_type, uhp.mark FROM " + USERS_HAVE_POSTS_TABLE +
+                " AS uhp JOIN " + USER_TABLE + " AS u ON uhp.user_id=u.id JOIN " + HOMEWORKS_TABLE +
+                " AS h ON uhp.homework_id=h.id JOIN " + GROUPS_TABLE + " AS g ON u.group_id=g.id " +
+                " WHERE uhp.post_id=?";
+        BeanPropertyRowMapper<UserMarkingModel> rowMapper = new BeanPropertyRowMapper<>(UserMarkingModel.class);
+        rowMapper.setPrimitivesDefaultedForNullValue(true);
+        return jdbcTemplate.query(selectQuery, rowMapper, postId);
     }
 
     @Override

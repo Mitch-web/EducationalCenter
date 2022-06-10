@@ -29,20 +29,33 @@
                             <c:if test="${image != null}">
                                 <p>Прикріплений файл:</p>
                                 <img src="data:${imageType};base64,${image}" width="350" height="200"/>
-                                <c:if test="${role == student}">
-                                    <a href="#" class="add_homework_container">
-                                        <p class="add_homework_text" style="font-size: 20; color: #115571;">Здати роботу</p>
-                                    </a>
-                                </c:if>
-                                <div class="popup_window">
-                                    <p class="close">X</p>
-                                    <form action="#" id="add_homework_form">
-                                        <label>Додати файл</label>
-                                        <input type="file" name="file_add_homework">
-                                        <input type="submit" value="Відправити">
-                                    </form>
+                            </c:if>
+                            <c:if test="${role == 'student'}">
+                                <a href="#" class="add_homework_container">
+                                    <p class="add_homework_text" style="font-size: 20; color: #115571;">Здати роботу</p>
+                                </a>
+                            </c:if>
+                            <div class="popup_window">
+                                <p class="close">X</p>
+                                <form action="#" id="add_homework_form">
+                                    <label>Додати файл</label>
+                                    <input type="file" name="file_add_homework">
+                                    <input type="submit" value="Відправити">
+                                </form>
+                            </div>
+                            <!--<img src="data:${homeworkType};base64,${homeworkImage}" width="250" height="100"/>-->
+                            <c:if test="${role == 'teacher'}">
+                                <div>
+                                    <c:forEach var="userMarking" items="${userMarkings}">
+                                        <c:if test="${userMarking.mark == 0}">
+                                            <c:set var="mark" value="Не оцінено"/>
+                                        </c:if>
+                                        <c:if test="${userMarking.mark != 0}">
+                                            <c:set var="mark" value="Завдання не має терміну"/>
+                                        </c:if>
+                                        <p>${userMarking.name}, ${userMarking.firstName}, ${userMarking.lastName}, ${userMarking.contentType}, ${mark} <input</p>
+                                    </c:forEach>
                                 </div>
-                                <!--<img src="data:${homeworkType};base64,${homeworkImage}" width="250" height="100"/>-->
                             </c:if>
                         </div>
                     </c:when>

@@ -19,6 +19,7 @@ send_homework_form.addEventListener('submit', function(e) {
 
         var formdata = new FormData();
         formdata.append("fileType", `${homework_inp.files[0].type}`);
+        formdata.append("fileName", `${homework_inp.files[0].name}`);
         let blb = new Blob([homework_inp.files[0]]);
         let url = URL.createObjectURL(blb);
         let reader = new FileReader();

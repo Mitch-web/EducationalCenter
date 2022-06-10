@@ -1,6 +1,7 @@
 package com.diplom.alex.services.impl;
 
 import com.diplom.alex.dao.UserDAO;
+import com.diplom.alex.model.UserMarkingModel;
 import com.diplom.alex.model.UserModel;
 import com.diplom.alex.services.UserService;
 
@@ -30,6 +31,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<UserModel> getUsers() {
         return userDAO.getUsers();
+    }
+
+    @Override
+    public List<UserMarkingModel> getByPostId(int postId) {
+        return userDAO.getByPostId(postId);
     }
 
     @Override

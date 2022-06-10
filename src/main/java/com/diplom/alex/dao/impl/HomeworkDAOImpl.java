@@ -51,7 +51,7 @@ public class HomeworkDAOImpl implements HomeworkDAO {
             return ps;
         }, fileKeyHolder);
 
-       jdbcTemplate.update("INSERT INTO " + USERS_HAVE_POSTS_TABLE + " VALUES(?,?,?)",
+       jdbcTemplate.update("INSERT INTO " + USERS_HAVE_POSTS_TABLE + " (user_id, post_id, homework_id) VALUES(?,?,?)",
                userId, postId, fileKeyHolder.getKey());
     }
 
