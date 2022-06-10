@@ -4,6 +4,7 @@ import com.diplom.alex.model.LoginForm;
 import com.diplom.alex.model.RoleModel;
 import com.diplom.alex.model.UserModel;
 import com.diplom.alex.services.CourseService;
+import com.diplom.alex.services.GroupService;
 import com.diplom.alex.services.RoleService;
 import com.diplom.alex.services.UserService;
 
@@ -30,6 +31,8 @@ public class LoginController {
     private RoleService roleService;
     @Autowired
     private CourseService courseService;
+    @Autowired
+    private GroupService groupService;
 
     @PostMapping("/login")
     public @ResponseBody ResponseEntity<Object> login(@ModelAttribute("loginForm") @Valid LoginForm loginForm, HttpSession session,
@@ -52,9 +55,9 @@ public class LoginController {
     }
 
     @PostMapping("/registration")
-    public ResponseEntity<Object> addUser(@ModelAttribute("newUser") UserModel user) {
+    public ResponseEntity<Object> addUser(@ModelAttribute("newUser") UserModel user, String groupName) {
         user.setRoleId(roleService.getIdByName("student"));
-        user.setGroupId(0);
+        user.setGroupId(groupService.getIdByName(groupName));
         userService.createUser(user);
         return ResponseEntity.ok(MAIN_PAGE);
     }

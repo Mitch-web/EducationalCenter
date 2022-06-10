@@ -9,5 +9,6 @@ public interface GroupDAO {
 
     GroupModel getUserGroup(UserModel user);
     List<GroupModel> getAllGroups();
+    int getIdByName(String name);
 
 }

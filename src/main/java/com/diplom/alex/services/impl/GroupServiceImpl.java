@@ -24,4 +24,9 @@ public class GroupServiceImpl implements GroupService {
     public List<GroupModel> getAllGroups() {
         return groupDAO.getAllGroups();
     }
+
+    @Override
+    public int getIdByName(String name) {
+        return groupDAO.getIdByName(name);
+    }
 }

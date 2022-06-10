@@ -9,5 +9,6 @@ public interface GroupService {
 
     GroupModel getUserGroup(UserModel user);
     List<GroupModel> getAllGroups();
+    int getIdByName(String name);
 
 }

@@ -29,4 +29,9 @@ public class GroupDAOImpl implements GroupDAO {
     public List<GroupModel> getAllGroups() {
         return jdbcTemplate.query("SELECT * FROM " + GROUPS_TABLE, new BeanPropertyRowMapper<>(GroupModel.class));
     }
+
+    @Override
+    public int getIdByName(String name) {
+        return jdbcTemplate.queryForObject("SELECT id FROM " + GROUPS_TABLE + " WHERE name=?", new Object[]{name}, Integer.class);
+    }
 }
