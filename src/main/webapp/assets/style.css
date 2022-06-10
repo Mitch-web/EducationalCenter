@@ -140,7 +140,7 @@ aside {
     max-width: 322px;
     min-height: 500px;
     height: 100%;
-    width: 20%;
+    width: 27%;
     background: #115571;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 50px 0px;
@@ -381,4 +381,78 @@ input[type="submit"] {
     background-color: #f2f200;
     border: 0;
     border-radius: 10px;
+}
+
+.marks_content_container {
+    position: relative;
+}
+
+.show_students_list {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: max-content;
+    cursor: pointer;
+}
+
+.marks_list_container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+li {
+    list-style: none;
+}
+
+.marks_list_titles {
+    width: 85%;
+    padding: 20px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.marks_list_titles p:nth-child(1) {
+    width: 15%;
+}
+
+.marks_list_titles p:nth-child(1) {
+    width: 35%;
+}
+
+.marks_list_titles p:nth-child(1) {
+    width: 25%;
+}
+
+.marks_list_titles p:nth-child(1) {
+    width: 25%;
+}
+
+.marks_list_container ul {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.marks_list_container ul li p:nth-child(1) {
+    width: 10%;
+}
+
+.marks_list_container ul li p:nth-child(2) {
+    width: 35%
+}
+
+.marks_list_container ul li p:nth-child(3) {
+    width: 25%;
+}
+
+.marks_list_container ul li p:nth-child(4) {
+    width: 10%;
+}
+
+.marks_list_container ul li button {
+    width: 20%;
 }
