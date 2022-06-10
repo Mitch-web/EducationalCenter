@@ -56,19 +56,21 @@
                                                         <div class="marks_content_container">
                                                             <p class="show_students_list">Показати список долбоёбов</p>
                                                             <div class="marks_list_container">
-                                                                <div class="marks_list_titles">
-                                                                    <p>Группа</p>
-                                                                    <p>Ебаных</p>
-                                                                    <p>Обосанных</p>
-                                                                    <p>Лохов</p>
-                                                                </div>
                                                                 <ul>
+                                                                    <li class="marks_list_titles">
+                                                                        <p>Группа</p>
+                                                                        <p>ФИО</p>
+                                                                        <p>Завдання</p>
+                                                                        <p>Оцинка</p>
+                                                                    </li>
                                                                     <li>
-                                                                        <p>Илюха</p>
-                                                                        <p>Лохов</p>
-                                                                        <p>Вальдемарыч</p>
-                                                                        <p>Ты будешь сосать мой член</p>
-                                                                        <button>Отправить лабораторную</button>
+                                                                        <p>КН-15</p>
+                                                                        <p>Стоволос Алексей Батькович</p>
+                                                                        <p>homework.docx</p>
+                                                                        <p>5</p>
+                                                                        <div class="check_mark_btn">
+                                                                            <button>Оциныты</button>
+                                                                        </div>
                                                                     </li>
                                                                 </ul>
                                                             </div>
