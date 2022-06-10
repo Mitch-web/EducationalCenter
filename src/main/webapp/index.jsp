@@ -43,6 +43,12 @@
                     <label for="login">Придумайте логін:</label>
                     <input type="text" name="login" class="login" />
                     <label for="password">Придумайте пароль:</label>
+                    <select name="add_new_select" id="add_new_select">
+                        <option value="КН-18">КН-18</option>
+                        <option value="КІБ-18">КІБ-18</option>
+                        <option value="ОІП">ОІП</option>
+                        <option value="КІ-18">КІ-18</option>
+                    </select>
                     <input type="password" name="password" class="password" />
                     <input class="add_new_employee_but" type="submit" value="Зареєструватись" />
                 </form:form>
