@@ -44,6 +44,7 @@
                     <input type="text" name="login" class="login" />
                     <label for="password">Придумайте пароль:</label>
                     <input type="password" name="password" class="password" />
+                    <label for="password">Оберить группу</label>
                     <select class="add_new_select" name="add_new_select" id="add_new_select">
                         <option value="КН-18">КН-18</option>
                         <option value="КІБ-18">КІБ-18</option>

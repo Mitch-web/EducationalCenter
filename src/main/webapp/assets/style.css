@@ -276,6 +276,14 @@ aside .courses_container a:hover svg {
     align-items: center;
 }
 
+.add_new_select {
+    outline: none;
+    border: 0;
+    margin-top: 15px;
+    height: 22px;
+    border-radius: 7px;
+}
+
 .add_event_container p {
     font-size: 1.3rem;
     color: #000;
