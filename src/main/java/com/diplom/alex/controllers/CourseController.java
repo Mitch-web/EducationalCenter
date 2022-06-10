@@ -7,10 +7,13 @@ import com.diplom.alex.services.CourseService;
 import com.diplom.alex.services.FileService;
 import com.diplom.alex.services.PostService;
 import com.diplom.alex.services.UserService;
+import com.diplom.alex.services.HomeworkService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -36,6 +39,8 @@ public class CourseController {
     private CourseService courseService;
     @Autowired
     private FileService fileService;
+    @Autowired
+    private HomeworkService homeworkService;
 
     @GetMapping("/{courseId}")
     public ModelAndView getMathCourses(HttpServletRequest request, @PathVariable int courseId) {
@@ -60,6 +65,13 @@ public class CourseController {
             maw.addObject("incorrectPost", true);
         }
         return maw;
+    }
+
+    @PostMapping("/{courseId}/posts/{id}")
+    public ResponseEntity<Object> postMark(@PathVariable("id") int id, int userId, int mark) {
+        return homeworkService.updateWithMark(id, userId, mark)
+                ? ResponseEntity.ok().build()
+                : ResponseEntity.badRequest().body("Виникла помилка в процесі виконання запиту");
     }
 
     private long getDatesDifferenceInDays(String deadline) throws ParseException {

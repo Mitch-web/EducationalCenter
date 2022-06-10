@@ -30,4 +30,9 @@ public class HomeworkServiceImpl implements HomeworkService {
         homework.setContent(Base64.getEncoder().encode(homework.getContent()));
         homeworkDAO.createHomeworkToPost(homework, postId, userId);
     }
+
+    @Override
+    public boolean updateWithMark(int postId, int userId, int mark) {
+        return homeworkDAO.updateWithMark(postId, userId, mark);
+    }
 }

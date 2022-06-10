@@ -11,7 +11,7 @@ public class HomeworkModel {
 
     private int id;
     private String contentType;
+    private String fileName;
     private byte[] content;
-    private short mark;
 
 }

@@ -1,8 +1,8 @@
 package com.diplom.alex.dao.impl;
 
 import com.diplom.alex.dao.HomeworkDAO;
-import com.diplom.alex.model.FileModel;
 import com.diplom.alex.model.HomeworkModel;
+import org.springframework.jdbc.SQLWarningException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
@@ -17,7 +17,7 @@ import static com.diplom.alex.constants.ApplicationConstants.*;
 public class HomeworkDAOImpl implements HomeworkDAO {
 
     private static final String ID = "id";
-    private static final String INSERT_HOMEWORK = "INSERT INTO " + HOMEWORKS_TABLE + " (content_type, content) VALUES (?,?)";
+    private static final String INSERT_HOMEWORK = "INSERT INTO " + HOMEWORKS_TABLE + " (content_type, file_name, content) VALUES (?,?,?)";
 
 
     private JdbcTemplate jdbcTemplate;
@@ -55,8 +55,21 @@ public class HomeworkDAOImpl implements HomeworkDAO {
                userId, postId, fileKeyHolder.getKey());
     }
 
+    @Override
+    public boolean updateWithMark(int postId, int userId, int mark) {
+        try {
+            jdbcTemplate.update("UPDATE " + USERS_HAVE_POSTS_TABLE + " SET mark=? WHERE post_id=? AND user_id=?",
+                    mark, postId, userId);
+        } catch (SQLWarningException e) {
+            return false;
+        }
+        return true;
+    }
+
+
     private void populateHomeworkStatement(PreparedStatement ps, HomeworkModel file) throws SQLException {
         ps.setString(1, file.getContentType());
-        ps.setBytes(2, file.getContent());
+        ps.setString(2, file.getFileName());
+        ps.setBytes(3, file.getContent());
     }
 }

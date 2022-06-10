@@ -48,7 +48,7 @@ public class StudentController {
                                           String fileType, String fileName, String file) {
         if (null != file) {
             UserModel currentUser = (UserModel) session.getAttribute("user");
-            HomeworkModel homeworkToUpload = new HomeworkModel(0, fileType, file.getBytes(), (short) 0);
+            HomeworkModel homeworkToUpload = new HomeworkModel(0, fileType, fileName, file.getBytes());
             homeworkService.createHomeworkToPost(homeworkToUpload, postId, currentUser.getId());
             return ResponseEntity.ok().build();
         }
