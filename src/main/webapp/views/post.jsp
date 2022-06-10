@@ -124,7 +124,7 @@
                                         alert('Поставьте оценку от 1 до 5');
                                     } else {
                                         var settings = {
-                                            "url": url,
+                                            "url": current_url,
                                             "method": "POST",
                                             "timeout": 0,
                                             "headers": {
