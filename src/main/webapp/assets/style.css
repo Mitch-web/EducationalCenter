@@ -451,6 +451,16 @@ li {
     flex-direction: column;
     align-items: flex-start;
     width: 100%;
+    margin-top: 60px;
+    margin-bottom: 100px;
+    height: 0px;
+    opacity: 0;
+    transition: .5s;
+}
+
+.marks_list_container ul.active {
+    height: calc(100% + 1px);
+    opacity: 1;
 }
 
 .marks_list_elems {
@@ -459,31 +469,44 @@ li {
     align-items: flex-start;
 }
 
+.marks_list_container ul .marks_list_elems {
+    padding: 30px 0;
+}
+
 .marks_list_container ul .marks_list_elems p:nth-child(1) {
     width: 10%;
+    text-align: center;
 }
 
 .marks_list_container ul .marks_list_elems p:nth-child(2) {
-    width: 35%
+    width: 35%;
+    text-align: center;
 }
 
 .marks_list_container ul .marks_list_elems p:nth-child(3) {
     width: 25%;
+    text-align: center;
 }
 
 .marks_list_container ul .marks_list_elems p:nth-child(4) {
     width: 10%;
+    text-align: center;
 }
 
 .marks_list_container ul .marks_list_elems .check_mark_btn {
     width: 20%;
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
 .marks_list_container ul .marks_list_elems .check_mark_btn button {
-    width: 80%;
+    width: 65%;
+    height: 31px;
+    border: 0;
+    outline: none;
     border-radius: 100px;
     color: #000;
-    background-color: rgb(55, 179, 55);
+    background-color: rgb(114 224 114);
+    cursor: pointer;
 }

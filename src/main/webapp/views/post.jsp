@@ -54,7 +54,7 @@
                                                             <c:set var="mark" value="Завдання не має терміну" />
                                                         </c:if>
                                                         <div class="marks_content_container">
-                                                            <p class="show_students_list">Показати список долбоёбов</p>
+                                                            <p class="show_students_list">Показати список задач</p>
                                                             <div class="marks_list_container">
                                                                 <ul>
                                                                     <li class="marks_list_titles">
@@ -72,11 +72,29 @@
                                                                             <button>Оциныты</button>
                                                                         </div>
                                                                     </li>
+                                                                    <li class="marks_list_elems">
+                                                                        <p>КН-15</p>
+                                                                        <p>Стоволос Алексей Батькович</p>
+                                                                        <p>homework.docx</p>
+                                                                        <p>5</p>
+                                                                        <div class="check_mark_btn">
+                                                                            <button>Оциныты</button>
+                                                                        </div>
+                                                                    </li>
+                                                                    <li class="marks_list_elems">
+                                                                        <p>КН-15</p>
+                                                                        <p>Стоволос Алексей Батькович</p>
+                                                                        <p>homework.docx</p>
+                                                                        <p>5</p>
+                                                                        <div class="check_mark_btn">
+
+                                                                        </div>
+                                                                    </li>
                                                                 </ul>
                                                             </div>
                                                         </div>
-                                                        <p>${userMarking.name}, ${userMarking.firstName}, ${userMarking.lastName}, ${userMarking.contentType}, ${mark}
-                                                            <input</p>
+                                                        <!-- <p>${userMarking.name}, ${userMarking.firstName}, ${userMarking.lastName}, ${userMarking.contentType}, ${mark}
+                                                            <input</p>-->
                                                     </c:forEach>
                                                 </div>
                                             </c:if>
@@ -103,6 +121,13 @@
                     <script src="/assets/settings.js"></script>
                     <script src="/assets/script.js"></script>
                     <script src="/assets/send_homework.js"></script>
+                    <script>
+                        let show_students_list = document.querySelector('.show_students_list');
+                        let ul_list = document.querySelector('.marks_list_container ul');
+                        show_students_list.addEventListener('click', function() {
+                            ul_list.classList.toggle('active');
+                        })
+                    </script>
             </body>
 
         </html>
