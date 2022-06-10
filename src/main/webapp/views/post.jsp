@@ -63,11 +63,13 @@
                                                                         <p>Завдання</p>
                                                                         <p>Оцинка</p>
                                                                     </li>
-                                                                    <li class="marks_list_elems">
+                                                                    <li class="marks_list_elems" data-id="234325245423">
                                                                         <p>КН-15</p>
                                                                         <p>Стоволос Алексей Батькович</p>
                                                                         <p>homework.docx</p>
-                                                                        <p>5</p>
+                                                                        <div class="mark_value">
+                                                                            <input type="number">
+                                                                        </div>
                                                                         <div class="check_mark_btn">
                                                                             <button>Оциныты</button>
                                                                         </div>
@@ -76,7 +78,9 @@
                                                                         <p>КН-15</p>
                                                                         <p>Стоволос Алексей Батькович</p>
                                                                         <p>homework.docx</p>
-                                                                        <p>5</p>
+                                                                        <div class="mark_value">
+                                                                            <input type="number">
+                                                                        </div>
                                                                         <div class="check_mark_btn">
                                                                             <button>Оциныты</button>
                                                                         </div>
@@ -85,7 +89,9 @@
                                                                         <p>КН-15</p>
                                                                         <p>Стоволос Алексей Батькович</p>
                                                                         <p>homework.docx</p>
-                                                                        <p>5</p>
+                                                                        <div class="mark_value">
+                                                                            <p>5</p>
+                                                                        </div>
                                                                         <div class="check_mark_btn">
 
                                                                         </div>
@@ -126,7 +132,7 @@
                         let ul_list = document.querySelector('.marks_list_container ul');
                         show_students_list.addEventListener('click', function() {
                             ul_list.classList.toggle('active');
-                        })
+                        });
                     </script>
             </body>
 
