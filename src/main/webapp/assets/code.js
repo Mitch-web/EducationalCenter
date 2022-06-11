@@ -116,11 +116,14 @@ function add_new_empl() {
                 },
                 "error": function(response) {
                     preloadEnd('add_new_employee_popup');
+                    alert(response);
                     console.log(response);
                 }
             };
 
             $.ajax(settings).done(function(response) {
+                preloadEnd('add_new_employee_popup');
+                alert('Реєстрація пройшла успішно');
                 console.log(response);
             });
         }

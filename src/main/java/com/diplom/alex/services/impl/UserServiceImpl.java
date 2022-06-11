@@ -5,6 +5,8 @@ import com.diplom.alex.model.UserMarkingModel;
 import com.diplom.alex.model.UserModel;
 import com.diplom.alex.services.UserService;
 
+import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Optional;
 
@@ -35,7 +37,11 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<UserMarkingModel> getByPostId(int postId) {
-        return userDAO.getByPostId(postId);
+        List<UserMarkingModel> userMarkings = userDAO.getByPostId(postId);
+        userMarkings.forEach(userMarkingModel -> {
+            userMarkingModel.setContent(new String(userMarkingModel.getContent().getBytes(), StandardCharsets.UTF_8));
+        });
+        return userMarkings;
     }
 
     @Override
