@@ -61,7 +61,7 @@
                                                                     <p>${userMarking.lastName} ${userMarking.firstName}</p>
                                                                     <p>${userMarking.fileName}</p>
                                                                     <c:choose>
-                                                                        <c:when test="${userMarking.mark != 0}">
+                                                                        <c:when test="${userMarking.mark != -1}">
                                                                             <p>${userMarking.mark}</p>
                                                                         </c:when>
                                                                         <c:otherwise>
@@ -119,9 +119,9 @@
                                 let current_url = window.location.href;
                                 estimate_but.addEventListener('click', function() {
                                     if (mark.value == '') {
-                                        alert('Поставьте оценку');
-                                    } else if (Number(mark.value) < 1 || Number(mark.value) > 5) {
-                                        alert('Поставьте оценку от 1 до 5');
+                                        alert('Внесіть оцінку');
+                                    } else if (Number(mark.value) < 0 || Number(mark.value) > 100) {
+                                        alert('Внесіть оцінку від 0 до 100');
                                     } else {
                                         var settings = {
                                             "url": current_url,
