@@ -42,7 +42,7 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public List<UserMarkingModel> getByPostId(int postId) {
-        String selectQuery = "SELECT u.id, g.name, u.first_name, u.last_name,  h.file_name, uhp.mark FROM " + USERS_HAVE_POSTS_TABLE +
+        String selectQuery = "SELECT u.id, g.name, u.first_name, u.last_name,  h.file_name, h.content, uhp.mark FROM " + USERS_HAVE_POSTS_TABLE +
                 " AS uhp JOIN " + USER_TABLE + " AS u ON uhp.user_id=u.id JOIN " + HOMEWORKS_TABLE +
                 " AS h ON uhp.homework_id=h.id JOIN " + GROUPS_TABLE + " AS g ON u.group_id=g.id " +
                 " WHERE uhp.post_id=?";
@@ -67,12 +67,10 @@ public class UserDAOImpl implements UserDAO {
             return ps;
         }, keyHolder);
 
-        String updateSql = "";
+        String updateSql = "INSERT INTO " + COURSES_HAVE_USERS_TABLE + " VALUES(?,?)";
         for (int courseId : coursesIds) {
-            updateSql = updateSql.concat("INSERT INTO "  + COURSES_HAVE_USERS_TABLE + " VALUES(?,?);\n");
+            jdbcTemplate.update(updateSql, keyHolder.getKey(), courseId);
         }
-        jdbcTemplate.update(updateSql, keyHolder.getKey(), coursesIds[0], keyHolder.getKey(), coursesIds[1],
-                keyHolder.getKey(), coursesIds[2]);
     }
 
     private UserModel extractUser(String query, Object[] params) {

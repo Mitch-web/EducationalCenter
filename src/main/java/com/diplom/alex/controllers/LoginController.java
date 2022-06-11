@@ -9,7 +9,9 @@ import com.diplom.alex.services.RoleService;
 import com.diplom.alex.services.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.http.ResponseEntity;
+import org.springframework.jdbc.BadSqlGrammarException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -17,6 +19,8 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+
+import java.sql.SQLException;
 
 import static com.diplom.alex.constants.ApplicationConstants.*;
 
@@ -58,7 +62,11 @@ public class LoginController {
     public ResponseEntity<Object> addUser(@ModelAttribute("newUser") UserModel user, String groupName) {
         user.setRoleId(roleService.getIdByName("student"));
         user.setGroupId(groupService.getIdByName(groupName));
-        userService.createUser(user, groupService.getCoursesIdByGroupName(groupName));
+        try {
+            userService.createUser(user, groupService.getCoursesIdByGroupName(groupName));
+        } catch (DataAccessException e) {
+            return ResponseEntity.badRequest().body("Помилка під час реєстрації");
+        }
         return ResponseEntity.ok(MAIN_PAGE);
     }
 
