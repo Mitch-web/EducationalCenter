@@ -39,7 +39,8 @@ public class UserServiceImpl implements UserService {
     public List<UserMarkingModel> getByPostId(int postId) {
         List<UserMarkingModel> userMarkings = userDAO.getByPostId(postId);
         userMarkings.forEach(userMarkingModel -> {
-            userMarkingModel.setContent(new String(userMarkingModel.getContent().getBytes(), StandardCharsets.UTF_8));
+            userMarkingModel.setContent("data:" + userMarkingModel.getContentType() + ";base64," +
+                    new String(userMarkingModel.getContent().getBytes(), StandardCharsets.UTF_8));
         });
         return userMarkings;
     }
