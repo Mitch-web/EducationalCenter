@@ -14,6 +14,7 @@ public class UserMarkingModel {
     private String firstName;
     private String lastName;
     private String fileName;
+    private String contentType;
     private String content;
     private int mark;
 

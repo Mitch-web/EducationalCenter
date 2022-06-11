@@ -59,7 +59,7 @@
                                                                 <li class="marks_list_elems" data-id="${userMarking.id}">
                                                                     <p>${userMarking.name}</p>
                                                                     <p>${userMarking.lastName} ${userMarking.firstName}</p>
-                                                                    <p><a href="#" data-img="${userMarking.content}" onclick="localStorage.setItem('base64Img', this.getAttribute('data-img'))" target="_blank">${userMarking.fileName}</a></p>
+                                                                    <p><a href="/views/image_view.jsp" data-img="${userMarking.content}" onclick="localStorage.setItem('base64Img', this.getAttribute('data-img'))" target="_blank">${userMarking.fileName}</a></p>
                                                                     <c:choose>
                                                                         <c:when test="${userMarking.mark != -1}">
                                                                             <p>${userMarking.mark}</p>
