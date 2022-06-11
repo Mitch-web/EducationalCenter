@@ -12,5 +12,5 @@ public interface UserDAO {
     Optional<UserModel> getUserByLogin(String login);
     List<UserModel> getUsers();
     List<UserMarkingModel> getByPostId(int postId);
-    void createUser(UserModel user);
+    void createUser(UserModel user, int[] coursesIds);
 }

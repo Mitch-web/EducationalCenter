@@ -8,7 +8,7 @@
         <textarea name="description-inp"></textarea>
         <label>Додати фото</label>
         <input type="file" name="file_add_foto" id="file_add_foto">
-        <label>Дедлайн</label>
+        <label>Кінцевий термін</label>
         <input type="date" name="deadline-inp">
         <input type="submit" value="Відправити">
     </form>

@@ -5,7 +5,10 @@ import com.diplom.alex.model.UserMarkingModel;
 import com.diplom.alex.model.UserModel;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.jdbc.support.KeyHolder;
 
+import java.sql.PreparedStatement;
 import java.util.List;
 import java.util.Optional;
 
@@ -49,11 +52,27 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public void createUser(UserModel user) {
+    public void createUser(UserModel user, int[] coursesIds) {
+        KeyHolder keyHolder = new GeneratedKeyHolder();
         String sqlToInsert = "INSERT INTO " + USER_TABLE +
                 "(login, password, role_id, first_name, last_name, group_id) VALUES(?,?,?,?,?,?)";
-        jdbcTemplate.update(sqlToInsert, user.getLogin(), user.getPassword(), user.getRoleId(),
-                user.getFirstName(), user.getLastName(), user.getGroupId());
+        jdbcTemplate.update(connection -> {
+            PreparedStatement ps = connection.prepareStatement(sqlToInsert, new String[]{"id"});
+            ps.setString(1, user.getLogin());
+            ps.setString(2, user.getPassword());
+            ps.setInt(3, user.getRoleId());
+            ps.setString(4, user.getFirstName());
+            ps.setString(5, user.getLastName());
+            ps.setInt(6, user.getGroupId());
+            return ps;
+        }, keyHolder);
+
+        String updateSql = "";
+        for (int courseId : coursesIds) {
+            updateSql = updateSql.concat("INSERT INTO "  + COURSES_HAVE_USERS_TABLE + " VALUES(?,?);\n");
+        }
+        jdbcTemplate.update(updateSql, keyHolder.getKey(), coursesIds[0], keyHolder.getKey(), coursesIds[1],
+                keyHolder.getKey(), coursesIds[2]);
     }
 
     private UserModel extractUser(String query, Object[] params) {

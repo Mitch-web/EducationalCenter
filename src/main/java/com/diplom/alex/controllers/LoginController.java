@@ -58,7 +58,7 @@ public class LoginController {
     public ResponseEntity<Object> addUser(@ModelAttribute("newUser") UserModel user, String groupName) {
         user.setRoleId(roleService.getIdByName("student"));
         user.setGroupId(groupService.getIdByName(groupName));
-        userService.createUser(user);
+        userService.createUser(user, groupService.getCoursesIdByGroupName(groupName));
         return ResponseEntity.ok(MAIN_PAGE);
     }
 

@@ -4,19 +4,14 @@ import com.diplom.alex.dao.CourseDAO;
 import com.diplom.alex.model.CourseModel;
 import com.diplom.alex.services.CourseService;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class CourseServiceImpl implements CourseService {
 
     private final CourseDAO courseDAO;
-    private final Map<String, String> coursesNames;
 
     public CourseServiceImpl(CourseDAO courseDAO) {
         this.courseDAO = courseDAO;
-        coursesNames = new HashMap<>();
-        initializeMap();
     }
 
     @Override
@@ -39,14 +34,4 @@ public class CourseServiceImpl implements CourseService {
         return courseDAO.getByUserId(userId);
     }
 
-    @Override
-    public String getCourseNameByParam(String param) {
-        return coursesNames.get(param);
-    }
-
-    private void initializeMap() {
-        coursesNames.put("math", "Математика");
-        coursesNames.put("physic", "Фізика");
-        coursesNames.put("chemistry", "Хімія");
-    }
 }
