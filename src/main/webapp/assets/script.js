@@ -41,13 +41,13 @@
         });
     });
 
-    const remove_post_link = document.querySelector('.remove_post');
-    if (remove_post_link != null) {
-        let remove_post_input = remove_post_link.querySelector('[name="remove_input"]');
-
-        remove_post_link.addEventListener('click', function(e) {
-            e.preventDefault();
-            if (remove_post_input.value != 0) {
+    const remove_post_link = document.querySelectorAll('.remove_post');
+    if (remove_post_link) {
+    for(let deleteBut of remove_post_link){
+        deleteBut.addEventListener('click', function(e){
+        e.preventDefault();
+        let remove_post_input = deleteBut.querySelector('[name="remove_input"]');
+            if (deleteBut.value != 0) {
                 var removeUrl = window.location.href;
                 removeUrl = removeUrl.replace("#", "") + "/posts/" + `${remove_post_input.value}` + "/remove";
                 alert(removeUrl);
@@ -69,8 +69,10 @@
                     console.log(response);
                 });
             }
-        })
+        });
+        }
     }
+
     const add_event_container = document.querySelector('.add_event_container');
     const popup_window = document.querySelector('.popup_window');
     const close = document.querySelector('.close');
