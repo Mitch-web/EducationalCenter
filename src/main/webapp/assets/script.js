@@ -50,6 +50,7 @@
             if (remove_post_input.value != 0) {
                 var removeUrl = window.location.href;
                 removeUrl = removeUrl.replace("#", "") + "/posts/" + `${remove_post_input.value}` + "/remove";
+                alert(removeUrl);
                 var settings = {
                     "url": removeUrl,
                     "method": "POST",
