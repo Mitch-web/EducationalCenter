@@ -15,7 +15,8 @@ public class UserMarkingModel {
     private String lastName;
     private String fileName;
     private String contentType;
-    private String content;
+    private byte[] content;
+    private String stringContent = "";
     private int mark;
 
 }

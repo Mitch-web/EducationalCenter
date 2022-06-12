@@ -39,8 +39,8 @@ CREATE TABLE IF NOT EXISTS users
 );
 
 -- INSERT VALUES TO USERS
-INSERT INTO users(login, password, role_id, first_name, last_name) VALUES ('admin', 'admin', 0, 'Admin', 'Lastivka');
-INSERT INTO users(login, password, role_id, first_name, last_name) VALUES ('student', 'student', 1, 'Student', 'Hardworker');
+INSERT INTO users(login, password, role_id, first_name, last_name, group_id) VALUES ('admin', 'admin', 0, 'Admin', 'Lastivka', 0);
+INSERT INTO users(login, password, role_id, first_name, last_name, group_id) VALUES ('student', 'student', 1, 'Student', 'Hardworker', 0);
 
 SET foreign_key_checks = 0;
 drop table if exists groups;
@@ -64,11 +64,6 @@ create table if not exists courses
     PRIMARY KEY (id)
 );
 
--- INSERT VALUES TO COURSES
-INSERT INTO courses(name) VALUES ('Математика');
-INSERT INTO courses(name) VALUES ('Хімія');
-INSERT INTO courses(name) VALUES ('Фізика');
-
 SET foreign_key_checks = 0;
 drop table if exists courses_have_users;
 SET foreign_key_checks = 1;
@@ -84,9 +79,7 @@ create table if not exists courses_have_users
         references courses(id)
         on delete no action on update no action
 );
-
 -- INSERT VALUES TO COURSES_HAVE_USERS
-INSERT INTO courses_have_users VALUES (1, 1);
 
 SET foreign_key_checks = 0;
 DROP TABLE IF EXISTS posts;
@@ -106,9 +99,6 @@ CREATE TABLE IF NOT EXISTS posts
 );
 
 -- INSERT VALUES TO POSTS
-INSERT INTO posts (title, subtitle) VALUES (
-    'ДЗ на 25.04.22', 'Отвесить чапалаха'
-);
 
 SET foreign_key_checks = 0;
 DROP TABLE IF EXISTS files;
@@ -172,4 +162,3 @@ create table if not exists courses_have_posts
 );
 
 -- INSERT VALUES TO COURSES_HAVE_POSTS
-INSERT INTO courses_have_posts VALUES (1, 1);

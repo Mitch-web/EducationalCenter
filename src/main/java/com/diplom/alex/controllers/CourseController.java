@@ -2,6 +2,7 @@ package com.diplom.alex.controllers;
 
 import com.diplom.alex.model.CourseModel;
 import com.diplom.alex.model.FileModel;
+import com.diplom.alex.model.HomeworkModel;
 import com.diplom.alex.model.PostModel;
 import com.diplom.alex.services.CourseService;
 import com.diplom.alex.services.FileService;
@@ -22,6 +23,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.nio.charset.StandardCharsets;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
@@ -72,6 +74,15 @@ public class CourseController {
         return homeworkService.updateWithMark(id, userId, mark)
                 ? ResponseEntity.ok().body(mark)
                 : ResponseEntity.badRequest().body("Виникла помилка в процесі виконання запиту");
+    }
+
+    @GetMapping("/{courseId}/posts/{id}/{fileName}")
+    public ModelAndView getHomeworkPage(@PathVariable("id") int id, int userId) {
+        ModelAndView maw = new ModelAndView("file");
+        HomeworkModel homework = homeworkService.getHomeworkByPostAndUser(id, userId);
+        maw.addObject("imageType", homework.getContentType());
+        maw.addObject("image", new String(homework.getContent(), StandardCharsets.UTF_8));
+        return maw;
     }
 
     private long getDatesDifferenceInDays(String deadline) throws ParseException {

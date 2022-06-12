@@ -26,7 +26,7 @@ import static com.diplom.alex.constants.ApplicationConstants.*;
 
 @Controller
 @RequestMapping(produces = "text/html; charset=UTF-8")
-@SessionAttributes({"user","role","courses"})
+@SessionAttributes({"user","role","courses","group"})
 public class LoginController {
 
     @Autowired
@@ -55,6 +55,7 @@ public class LoginController {
         model.addAttribute("user", userModel);
         model.addAttribute("role", RoleModel.getRole(userModel).getName());
         model.addAttribute("courses", courseService.getByUserId(userModel.getId()));
+        model.addAttribute("group", groupService.getUserGroup(userModel));
         return ResponseEntity.ok(String.format("/%s%s", RoleModel.getRole(userModel).getName(), CABINET));
     }
 
