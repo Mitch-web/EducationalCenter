@@ -14,4 +14,5 @@ public interface PostService {
     List<PostModel> getPostsByDeadline(String deadline);
     List<PostModel> getPostsByDate();
     boolean addNewPost(PostModel post, int courseId, FileModel file);
+    void removePost(int postId, int courseId);
 }

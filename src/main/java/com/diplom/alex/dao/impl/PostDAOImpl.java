@@ -90,6 +90,12 @@ public class PostDAOImpl implements PostDAO {
         return true;
     }
 
+    @Override
+    public void removePost(int postId, int courseId) {
+        jdbcTemplate.update("DELETE FROM " + COURSE_HAVE_POSTS_TABLE + " WHERE course_id=? AND post_id=?", courseId, postId);
+        jdbcTemplate.update("DELETE FROM " + POST_TABLE + " WHERE id=?", postId);
+    }
+
     private void populatePostStatement(PreparedStatement ps, PostModel post) throws SQLException {
         ps.setString(1, post.getTitle());
         ps.setString(2, post.getSubtitle());

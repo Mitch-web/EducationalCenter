@@ -41,6 +41,34 @@
         });
     });
 
+    const remove_post_link = document.querySelector('.remove_post');
+    let remove_post_input = remove_post_link.querySelector('[name="remove_input"]');
+
+    remove_post_link.addEventListener('click', function(e) {
+        e.preventDefault();
+        if (remove_post_input.value != 0) {
+            var removeUrl = window.location.href;
+            removeUrl = removeUrl.replace("#", "") + "/posts/" + `${remove_post_input.value}` + "/remove";
+            var settings = {
+                "url": removeUrl,
+                "method": "POST",
+                "timeout": 0,
+                "headers": {
+                    "Content-Type": "application/x-www-form-urlencoded"
+                },
+                "success": function(response) {
+                    window.location.reload();
+                },
+                error: function(response) {
+                    alert(response);
+                }
+            };
+            $.ajax(settings).done(function(response) {
+                console.log(response);
+            });
+        }
+    })
+
     const add_event_container = document.querySelector('.add_event_container');
     const popup_window = document.querySelector('.popup_window');
     const close = document.querySelector('.close');

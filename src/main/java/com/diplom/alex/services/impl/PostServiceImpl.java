@@ -66,4 +66,9 @@ public class PostServiceImpl implements PostService {
         }
         return postDAO.addNewPost(post, courseId, file);
     }
+
+    @Override
+    public void removePost(int postId, int courseId) {
+        postDAO.removePost(postId, courseId);
+    }
 }
