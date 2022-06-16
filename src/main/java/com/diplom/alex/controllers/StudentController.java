@@ -43,7 +43,7 @@ public class StudentController {
                 , HttpStatus.OK);
     }
 
-    @PostMapping("/courses/*/posts/{postId}/add-homework")
+    @PostMapping(value = "/courses/*/posts/{postId}/add-homework", produces = "text/plain;charset=UTF-8")
     public ResponseEntity addHomeWorkFile(HttpSession session, @PathVariable int postId,
                                           String fileType, String fileName, String file) {
         if (null != file) {

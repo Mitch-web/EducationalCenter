@@ -16,10 +16,12 @@
                         <h3 class="course_item_title">${post.title}</h3>
                         <p class="course_item_subtitle">${post.subtitle}</p>
                     </a>
-                    <a href="#" class="remove_post">
-                        <p>Видалити</p>
-                        <input type="hidden" value="${post.id}" name="remove_input"/>
-                    </a>
+                    <c:if test="${role == 'teacher'}">
+                        <a href="#" class="remove_post">
+                            <p>Видалити</p>
+                            <input type="hidden" value="${post.id}" name="remove_input"/>
+                        </a>
+                    </c:if>
                 </c:forEach>
             </div>
             <c:if test="${role == 'teacher'}">

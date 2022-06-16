@@ -4,7 +4,6 @@ import com.diplom.alex.dao.HomeworkDAO;
 import com.diplom.alex.model.HomeworkModel;
 import com.diplom.alex.services.HomeworkService;
 
-import java.util.Base64;
 import java.util.List;
 
 public class HomeworkServiceImpl implements HomeworkService {
@@ -27,7 +26,6 @@ public class HomeworkServiceImpl implements HomeworkService {
 
     @Override
     public void createHomeworkToPost(HomeworkModel homework, int postId, int userId) {
-        homework.setContent(Base64.getEncoder().encode(homework.getContent()));
         homeworkDAO.createHomeworkToPost(homework, postId, userId);
     }
 
