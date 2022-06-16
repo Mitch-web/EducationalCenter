@@ -1,9 +1,6 @@
 package com.diplom.alex.controllers;
 
-import com.diplom.alex.model.CourseModel;
-import com.diplom.alex.model.FileModel;
-import com.diplom.alex.model.HomeworkModel;
-import com.diplom.alex.model.PostModel;
+import com.diplom.alex.model.*;
 import com.diplom.alex.services.CourseService;
 import com.diplom.alex.services.FileService;
 import com.diplom.alex.services.PostService;
@@ -20,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import java.nio.charset.StandardCharsets;
 import java.sql.SQLException;
@@ -46,7 +44,7 @@ public class CourseController {
     private HomeworkService homeworkService;
 
     @GetMapping("/{courseId}")
-    public ModelAndView getMathCourses(HttpServletRequest request, @PathVariable int courseId) {
+    public ModelAndView getCoursePosts(HttpServletRequest request, @PathVariable int courseId) {
         ModelAndView maw = new ModelAndView("course_page");
         CourseModel course = courseService.getById(courseId);
         maw.addObject("course", course);
@@ -56,11 +54,16 @@ public class CourseController {
     }
 
     @GetMapping("/{courseId}/posts/{id}")
-    public ModelAndView getPostPage(@PathVariable(value = "id") int id, @PathVariable(value = "courseId") int courseId)
-                                                                                                throws ParseException {
+    public ModelAndView getPostPage(@PathVariable(value = "id") int id, HttpSession session,
+                                    @PathVariable(value = "courseId") int courseId) throws ParseException {
         ModelAndView maw = new ModelAndView("post");
         PostModel postById = postService.getPostById(id);
         if (postById.getId() == id) {
+            int userId = ((UserModel) session.getAttribute("user")).getId();
+            String role = (String) session.getAttribute("role");
+            if ("student".equals(role)) {
+                maw.addObject("isTaskDone", isTaskDone(userId, id));
+            }
             maw.addObject("course", courseService.getById(courseId));
             maw.addObject("userMarkings", userService.getByPostId(id));
             getAndShowPost(maw, postById);
@@ -68,6 +71,10 @@ public class CourseController {
             maw.addObject("incorrectPost", true);
         }
         return maw;
+    }
+
+    private boolean isTaskDone(int userId, int postId) {
+        return null != homeworkService.getHomeworkByPostAndUser(postId, userId);
     }
 
     @PostMapping("/{courseId}/posts/{id}")

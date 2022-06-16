@@ -30,7 +30,7 @@
                                         <p>Прикріплений файл:</p>
                                         <img src="data:${imageType};base64,${image}" width="350" height="200" />
                                     </c:if>
-                                    <c:if test="${role == 'student'}">
+                                    <c:if test="${!isTaskDone}">
                                         <a href="#" class="add_homework_container">
                                             <p class="add_homework_text" style="font-size: 20; color: #115571;">Здати роботу</p>
                                         </a>
@@ -43,7 +43,6 @@
                                             <input type="submit" value="Відправити">
                                         </form>
                                     </div>
-                                    <!--<img src="data:${homeworkType};base64,${homeworkImage}" width="250" height="100"/>-->
                                     <c:if test="${role == 'teacher'}">
                                         <div class="marks_content_container">
                                             <p class="show_students_list">Показати список студентів</p>
