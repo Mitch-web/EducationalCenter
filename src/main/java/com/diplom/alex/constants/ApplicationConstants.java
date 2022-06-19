@@ -19,12 +19,9 @@ public class ApplicationConstants {
     public static final String COURSES_HAVE_USERS_TABLE = "courses_have_users";
 
     //===PAGES =======================================
-    public static final String TEACHER_PAGE = "cabinets/teacher_cabinet";
     public static final String MAIN_PAGE = "main";
-    public static final String MATH_PAGE = "math";
-    public static final String PHYSIC_PAGE = "physic";
-    public static final String CHEMISTRY_PAGE = "chemistry";
     public static final String CALENDAR_PAGE = "calendar";
+    public static final String COURSES_EDIT_PAGE = "courses_edit";
 
     //===URL ========================================
     public static final String CABINET = "/cabinet";

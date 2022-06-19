@@ -11,5 +11,6 @@ public interface CourseDAO {
     Optional<CourseModel> getByName(String name);
     Optional<CourseModel> getById(int id);
     List<CourseModel> getByUserId(int userId);
+    void removeById(int id);
 
 }

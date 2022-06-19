@@ -44,6 +44,11 @@ public class CourseDAOImpl implements CourseDAO {
                 new BeanPropertyRowMapper<>(CourseModel.class), userId);
     }
 
+    @Override
+    public void removeById(int id) {
+        jdbcTemplate.update("DELETE FROM " + COURSE_TABLE + " WHERE id=?", id);
+    }
+
     private CourseModel extractCourse(String query, Object[] params) {
         return jdbcTemplate.query(query, new BeanPropertyRowMapper<>(CourseModel.class), params)
                 .stream()

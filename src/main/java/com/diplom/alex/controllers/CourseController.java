@@ -61,9 +61,7 @@ public class CourseController {
         if (postById.getId() == id) {
             int userId = ((UserModel) session.getAttribute("user")).getId();
             String role = (String) session.getAttribute("role");
-            if ("student".equals(role)) {
-                maw.addObject("isTaskDone", isTaskDone(userId, id));
-            }
+            maw.addObject("isPostTaskVisible", isPostTaskVisible(role, userId, id));
             maw.addObject("course", courseService.getById(courseId));
             maw.addObject("userMarkings", userService.getByPostId(id));
             getAndShowPost(maw, postById);
@@ -73,8 +71,8 @@ public class CourseController {
         return maw;
     }
 
-    private boolean isTaskDone(int userId, int postId) {
-        return null != homeworkService.getHomeworkByPostAndUser(postId, userId);
+    private boolean isPostTaskVisible(String role, int userId, int postId) {
+        return role.equals("student") && null != homeworkService.getHomeworkByPostAndUser(postId, userId);
     }
 
     @PostMapping("/{courseId}/posts/{id}")

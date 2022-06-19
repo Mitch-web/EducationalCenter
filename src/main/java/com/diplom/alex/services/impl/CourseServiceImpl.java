@@ -34,4 +34,9 @@ public class CourseServiceImpl implements CourseService {
         return courseDAO.getByUserId(userId);
     }
 
+    @Override
+    public void removeById(int id) {
+        courseDAO.removeById(id);
+    }
+
 }

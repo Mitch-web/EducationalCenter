@@ -32,6 +32,17 @@ public class TeacherController {
         return new ModelAndView(MAIN_PAGE);
     }
 
+    @GetMapping("/courses/all")
+    public ModelAndView getAllCourses() {
+        return new ModelAndView(COURSES_EDIT_PAGE);
+    }
+
+    @PostMapping(CABINET + "/{courseId}/remove")
+    public ResponseEntity removeCourseById(@PathVariable("courseId") int courseId) {
+        courseService.removeById(courseId);
+        return ResponseEntity.ok().build();
+    }
+
     @GetMapping("/calendar")
     public ModelAndView getCalendar() {
         return new ModelAndView(CALENDAR_PAGE);
