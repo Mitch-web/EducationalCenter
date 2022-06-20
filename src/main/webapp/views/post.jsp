@@ -27,14 +27,17 @@
                                     </c:if>
                                     <p>${timeToDeadline}</p>
                                     <c:if test="${image != null}">
-                                        <p>Прикріплений файл:</p>
-                                        <img src="data:${imageType};base64,${image}" width="350" height="200" />
+                                        <p style="margin-bottom: 20px;">Прикріплений файл:</p>
+                                        <img src="data:${imageType};base64,${image}" width="450" height="250" />
                                     </c:if>
-                                    <c:if test="${isPostTaskVisible}">
-                                        <a href="#" class="add_homework_container">
-                                            <p class="add_homework_text" style="font-size: 20; color: #115571;">Здати роботу</p>
-                                        </a>
-                                    </c:if>
+                                    <c:choose>
+                                        <c:when test="${isPostTaskVisible}">
+                                            <a href="#" class="add_homework_container"><p class="add_homework_text" style="font-size: 20; color: #115571; margin-top: -32px;">Здати роботу</p></a>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <c:if test="${role == 'student'}"><p style="margin-top: 30px;">Ви вже відправили свою відповідь</p></c:if>
+                                        </c:otherwise>
+                                    </c:choose>
                                     <div class="popup_window">
                                         <p class="close">X</p>
                                         <form action="#" id="add_homework_form">
