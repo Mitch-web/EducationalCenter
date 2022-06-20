@@ -30,7 +30,7 @@
                                         <p>Прикріплений файл:</p>
                                         <img src="data:${imageType};base64,${image}" width="350" height="200" />
                                     </c:if>
-                                    <c:if test="${isPostVisible}">
+                                    <c:if test="${isPostTaskVisible}">
                                         <a href="#" class="add_homework_container">
                                             <p class="add_homework_text" style="font-size: 20; color: #115571;">Здати роботу</p>
                                         </a>

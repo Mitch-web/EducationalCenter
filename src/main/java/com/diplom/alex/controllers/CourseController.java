@@ -20,7 +20,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import java.nio.charset.StandardCharsets;
-import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -72,7 +71,7 @@ public class CourseController {
     }
 
     private boolean isPostTaskVisible(String role, int userId, int postId) {
-        return role.equals("student") && null != homeworkService.getHomeworkByPostAndUser(postId, userId);
+        return role.equals("student") && null == homeworkService.getHomeworkByPostAndUser(postId, userId);
     }
 
     @PostMapping("/{courseId}/posts/{id}")
