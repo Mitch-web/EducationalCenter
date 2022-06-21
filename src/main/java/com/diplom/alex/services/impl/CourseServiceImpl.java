@@ -39,4 +39,9 @@ public class CourseServiceImpl implements CourseService {
         courseDAO.removeById(id);
     }
 
+    @Override
+    public void updateName(int id, String newName) {
+        courseDAO.updateName(id, newName);
+    }
+
 }

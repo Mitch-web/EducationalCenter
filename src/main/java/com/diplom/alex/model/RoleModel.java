@@ -2,7 +2,7 @@ package com.diplom.alex.model;
 
 public enum RoleModel {
 
-    TEACHER, STUDENT;
+    TEACHER, STUDENT, ADMIN;
 
     public static RoleModel getRole(UserModel user) {
         int roleId = user.getRoleId();

@@ -15,6 +15,7 @@ CREATE TABLE IF NOT EXISTS roles
 -- INSERT VALUES TO ROLES
 INSERT INTO roles VALUES (0, 'teacher');
 INSERT INTO roles VALUES (1, 'student');
+INSERT INTO roles VALUES (2, 'admin');
 
 SET foreign_key_checks = 0;
 DROP TABLE IF EXISTS users;

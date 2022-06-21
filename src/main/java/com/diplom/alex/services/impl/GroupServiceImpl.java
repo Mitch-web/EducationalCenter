@@ -44,7 +44,7 @@ public class GroupServiceImpl implements GroupService {
         groupCourses.put("КР-19", new int[]{4,9,10});
         groupCourses.put("КН-18", new int[]{4,9,10});
         groupCourses.put("КІБ-18", new int[]{11,12,13});
-        groupCourses.put("ОІП", new int[]{14,15,16});
+        groupCourses.put("ОІП-18", new int[]{14,15,16});
         groupCourses.put("КІ-18", new int[]{17,19,20});
     }
 }

@@ -11,5 +11,6 @@ public interface CourseService {
     CourseModel getById(int id);
     List<CourseModel> getByUserId(int userId);
     void removeById(int id);
+    void updateName(int id, String newName);
 
 }

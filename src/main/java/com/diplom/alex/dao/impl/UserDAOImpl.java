@@ -52,6 +52,14 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
+    public List<UserModel> getStudents() {
+        BeanPropertyRowMapper<UserModel> rowMapper = new BeanPropertyRowMapper(UserModel.class);
+        rowMapper.setPrimitivesDefaultedForNullValue(true);
+        return jdbcTemplate.query("SELECT u.id, u.login, u.first_name, u.last_name FROM " + USER_TABLE + " AS u JOIN " + ROLE_TABLE + " AS r" +
+                " ON u.role_id=r.id WHERE r.name='student'", rowMapper);
+    }
+
+    @Override
     public void createUser(UserModel user, int[] coursesIds) {
         KeyHolder keyHolder = new GeneratedKeyHolder();
         String sqlToInsert = "INSERT INTO " + USER_TABLE +

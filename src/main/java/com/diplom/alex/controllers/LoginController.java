@@ -11,7 +11,6 @@ import com.diplom.alex.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.ResponseEntity;
-import org.springframework.jdbc.BadSqlGrammarException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -19,8 +18,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
-
-import java.sql.SQLException;
 
 import static com.diplom.alex.constants.ApplicationConstants.*;
 
@@ -39,7 +36,7 @@ public class LoginController {
     private GroupService groupService;
 
     @PostMapping("/login")
-    public @ResponseBody ResponseEntity<Object> login(@ModelAttribute("loginForm") @Valid LoginForm loginForm, HttpSession session,
+    public @ResponseBody ResponseEntity<Object> login(@ModelAttribute("loginForm") @Valid LoginForm loginForm,
                                                       BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
             return ResponseEntity.badRequest()
@@ -66,7 +63,7 @@ public class LoginController {
         try {
             userService.createUser(user, groupService.getCoursesIdByGroupName(groupName));
         } catch (DataAccessException e) {
-            return ResponseEntity.badRequest().body("Помилка під час реєстрації");
+            return ResponseEntity.badRequest().body(REGISTRATION_ERROR);
         }
         return ResponseEntity.ok(MAIN_PAGE);
     }

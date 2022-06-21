@@ -22,6 +22,8 @@ public class ApplicationConstants {
     public static final String MAIN_PAGE = "main";
     public static final String CALENDAR_PAGE = "calendar";
     public static final String COURSES_EDIT_PAGE = "courses_edit";
+    public static final String ADMIN_CABINET_PAGE = "admin_cabinet";
+    public static final String STUDENTS_PAGE = "students";
 
     //===URL ========================================
     public static final String CABINET = "/cabinet";
@@ -32,8 +34,9 @@ public class ApplicationConstants {
     public static final String CHEMISTRY = "chemistry";
 
     //===ERROR MESSAGES==============================
-    public static final String INCORRECT_LOGIN_FORMAT = "Логин указан в неверном формате";
-    public static final String USER_NOT_FOUND = "Неправильный логин или пароль";
+    public static final String INCORRECT_LOGIN_FORMAT = "Логин має невірний формат";
+    public static final String USER_NOT_FOUND = "Невірний логін або пароль";
+    public static final String REGISTRATION_ERROR = "Помилка під час реєстрації";
 
     //===PATTERNS====================================
     public static final String DATE_PATTERN = "yyyy-MM-dd";

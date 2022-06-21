@@ -49,6 +49,11 @@ public class CourseDAOImpl implements CourseDAO {
         jdbcTemplate.update("DELETE FROM " + COURSE_TABLE + " WHERE id=?", id);
     }
 
+    @Override
+    public void updateName(int id, String newName) {
+        jdbcTemplate.update("UPDATE " + COURSE_TABLE + " SET name=? WHERE id=?", newName, id);
+    }
+
     private CourseModel extractCourse(String query, Object[] params) {
         return jdbcTemplate.query(query, new BeanPropertyRowMapper<>(CourseModel.class), params)
                 .stream()

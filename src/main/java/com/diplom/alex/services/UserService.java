@@ -11,5 +11,6 @@ public interface UserService {
     UserModel getUserByLogin(String login);
     List<UserModel> getUsers();
     List<UserMarkingModel> getByPostId(int postId);
+    List<UserModel> getStudents();
     void createUser(UserModel user, int[] coursesIds);
 }

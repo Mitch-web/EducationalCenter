@@ -48,7 +48,7 @@
                     <select class="add_new_select" name="add_new_select" id="add_new_select">
                         <option value="КН-18">КН-18</option>
                         <option value="КІБ-18">КІБ-18</option>
-                        <option value="ОІП">ОІП</option>
+                        <option value="ОІП-18">ОІП-18</option>
                         <option value="КІ-18">КІ-18</option>
                     </select>
                     <input class="add_new_employee_but" type="submit" value="Зареєструватись" />
