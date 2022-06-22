@@ -49,10 +49,13 @@ public class LoginController {
                     .body(USER_NOT_FOUND);
         }
 
+        String role = RoleModel.getRole(userModel).getName();
         model.addAttribute("user", userModel);
-        model.addAttribute("role", RoleModel.getRole(userModel).getName());
+        model.addAttribute("role", role);
         model.addAttribute("courses", courseService.getByUserId(userModel.getId()));
-        model.addAttribute("group", groupService.getUserGroup(userModel));
+        if (!"admin".equals(role)) {
+            model.addAttribute("group", groupService.getUserGroup(userModel));
+        }
         return ResponseEntity.ok(String.format("/%s%s", RoleModel.getRole(userModel).getName(), CABINET));
     }
 

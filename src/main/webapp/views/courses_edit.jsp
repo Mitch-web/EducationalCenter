@@ -16,7 +16,7 @@
                         <c:set var="k" value="${k + 1}"/>
                         <div class="course_elem" style="max-height: 150px;">
                         <p style="margin-bottom: 15px;">${k} ${course.name}
-                            <a class="remove_course" href="#" style="all: unset; margin-left: 20%; margin-right:10%; border-bottom: 1px solid">
+                            <a class="remove_course" href="#" style="all: unset; margin-right:40%; float:right; border-bottom: 1px solid">
                                 <input type="hidden" value="${course.id}" name="remove_input"/>
                                 Видалити
                             </a>
