@@ -12,8 +12,8 @@
                 <h2 class="course_title">Загальний список учнів</h2>
                 <div style="margin-top:50px;">
                     <c:forEach var="student" items="${students}">
-                        <p>Ім`я: ${student.firstName}, прізвище: ${student.lastName}
-                        <a class="remove_student" href="#" style="all: unset; margin-left: 20%; margin-right:10%; border-bottom: 1px solid">
+                        <p style="margin-bottom: 20px;">Ім`я: ${student.firstName}, прізвище: ${student.lastName}
+                        <a class="remove_student" href="#" style="all: unset; margin-right:30%; float:right; border-bottom: 1px solid">
                             <input type="hidden" value="${student.id}" name="remove_input"/>Видалити</a></p>
                     </c:forEach>
                 </div>
