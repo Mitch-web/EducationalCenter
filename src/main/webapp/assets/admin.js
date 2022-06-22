@@ -67,3 +67,35 @@ for(let updateBut of update_course_form) {
     });
     }
 }
+
+const remove_user_link = document.querySelectorAll('.remove_student');
+if (remove_user_link) {
+for(let deleteBut of remove_user_link) {
+    deleteBut.addEventListener('click', function(e) {
+    e.preventDefault();
+    let remove_user_input = deleteBut.querySelector('[name="remove_input"]');
+        if (deleteBut.value != 0) {
+            var removeUrl = window.location.href;
+            removeUrl = removeUrl.replace("#", "") + '/' + `${remove_user_input.value}` + "/remove";
+            var settings = {
+                "url": removeUrl,
+                "method": "POST",
+                "timeout": 0,
+                "headers": {
+                    "Content-Type": "application/x-www-form-urlencoded"
+                },
+                "success": function(response) {
+                    alert(response);
+                    window.location.reload();
+                },
+                error: function(response) {
+                    alert(response);
+                }
+            };
+            $.ajax(settings).done(function(response) {
+                console.log(response);
+            });
+        }
+    });
+    }
+}

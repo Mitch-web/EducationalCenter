@@ -14,4 +14,6 @@ public interface UserDAO {
     List<UserMarkingModel> getByPostId(int postId);
     List<UserModel> getStudents();
     void createUser(UserModel user, int[] coursesIds);
+    void deleteById(int id);
+
 }

@@ -12,7 +12,9 @@
                 <h2 class="course_title">Загальний список учнів</h2>
                 <div style="margin-top:50px;">
                     <c:forEach var="student" items="${students}">
-                        <p>Ім`я: ${student.firstName}, прізвище: ${student.lastName}</p>
+                        <p>Ім`я: ${student.firstName}, прізвище: ${student.lastName}
+                        <a class="remove_student" href="#" style="all: unset; margin-left: 20%; margin-right:10%; border-bottom: 1px solid">
+                            <input type="hidden" value="${student.id}" name="remove_input"/>Видалити</a></p>
                     </c:forEach>
                 </div>
             </div>
@@ -20,6 +22,7 @@
         <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
         <script src="/assets/settings.js"></script>
         <script src="/assets/script.js"></script>
+        <script src="/assets/admin.js"></script>
 </body>
 
 </html>

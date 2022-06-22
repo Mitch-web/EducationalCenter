@@ -53,7 +53,7 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public List<UserModel> getStudents() {
-        BeanPropertyRowMapper<UserModel> rowMapper = new BeanPropertyRowMapper(UserModel.class);
+        BeanPropertyRowMapper<UserModel> rowMapper = new BeanPropertyRowMapper<>(UserModel.class);
         rowMapper.setPrimitivesDefaultedForNullValue(true);
         return jdbcTemplate.query("SELECT u.id, u.login, u.first_name, u.last_name FROM " + USER_TABLE + " AS u JOIN " + ROLE_TABLE + " AS r" +
                 " ON u.role_id=r.id WHERE r.name='student'", rowMapper);
@@ -75,10 +75,15 @@ public class UserDAOImpl implements UserDAO {
             return ps;
         }, keyHolder);
 
-        String updateSql = "INSERT INTO " + COURSES_HAVE_USERS_TABLE + " VALUES(?,?)";
-        for (int courseId : coursesIds) {
-            jdbcTemplate.update(updateSql, keyHolder.getKey(), courseId);
-        }
+        jdbcTemplate.batchUpdate("INSERT INTO " + COURSES_HAVE_USERS_TABLE + " VALUES(" + keyHolder.getKey() + "," + coursesIds[0],
+                "INSERT INTO " + COURSES_HAVE_USERS_TABLE + " VALUES(" + keyHolder.getKey() + "," + coursesIds[1],
+                "INSERT INTO " + COURSES_HAVE_USERS_TABLE + " VALUES(" + keyHolder.getKey() + "," + coursesIds[2]);
+    }
+
+    @Override
+    public void deleteById(int id) {
+        jdbcTemplate.batchUpdate("DELETE FROM " + COURSES_HAVE_USERS_TABLE + " WHERE user_id=" + id,
+                                      "DELETE FROM " + USER_TABLE + " WHERE id=" + id);
     }
 
     private UserModel extractUser(String query, Object[] params) {

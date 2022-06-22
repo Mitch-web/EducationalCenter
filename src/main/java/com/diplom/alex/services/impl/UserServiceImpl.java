@@ -52,4 +52,9 @@ public class UserServiceImpl implements UserService {
     public void createUser(UserModel user, int[] coursesIds) {
         userDAO.createUser(user, coursesIds);
     }
+
+    @Override
+    public void deleteById(int id) {
+        userDAO.deleteById(id);
+    }
 }

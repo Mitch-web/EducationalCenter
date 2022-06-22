@@ -47,9 +47,15 @@ public class AdminController {
         return ResponseEntity.ok().build();
     }
 
-    @PostMapping( value = "/courses/{id}/update", produces = "text/plain;charset=UTF-8")
+    @PostMapping(value = "/courses/{id}/update", produces = "text/plain;charset=UTF-8")
     public ResponseEntity<Object> updateCourse(@PathVariable int id, String newName) {
         courseService.updateName(id, newName);
         return ResponseEntity.ok().body(newName);
+    }
+
+    @PostMapping(value = "/students/{id}/remove", produces = "text/plain;charset=UTF-8")
+    public ResponseEntity<Object> removeUser(@PathVariable int id) {
+        userService.deleteById(id);
+        return ResponseEntity.ok("Студент був успішно видалений!");
     }
 }
