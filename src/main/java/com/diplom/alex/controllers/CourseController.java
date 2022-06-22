@@ -23,6 +23,8 @@ import java.nio.charset.StandardCharsets;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
+import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 
 import static com.diplom.alex.constants.ApplicationConstants.*;
@@ -62,7 +64,20 @@ public class CourseController {
             String role = (String) session.getAttribute("role");
             maw.addObject("isPostTaskVisible", isPostTaskVisible(role, userId, id));
             maw.addObject("course", courseService.getById(courseId));
-            maw.addObject("userMarkings", userService.getByPostId(id));
+            List<UserMarkingModel> userMarkings = userService.getByPostId(id);
+            maw.addObject("userMarkings", userMarkings);
+            if ("student".equals(role)) {
+                 Optional<UserMarkingModel> userMarking = userMarkings.stream()
+                         .filter(marking -> userId == marking.getId())
+                         .findFirst();
+                if (userMarking.isPresent()) {
+                    if (userMarking.get().getMark() != -1) {
+                        maw.addObject("mark", "Ваша оцінка: " + userMarking.get().getMark());
+                    } else {
+                        maw.addObject("mark", "Очікуйте на оцінку");
+                    }
+                }
+            }
             getAndShowPost(maw, postById);
         } else {
             maw.addObject("incorrectPost", true);

@@ -35,7 +35,10 @@
                                             <a href="#" class="add_homework_container"><p class="add_homework_text" style="font-size: 20; color: #115571; margin-top: -32px;">Здати роботу</p></a>
                                         </c:when>
                                         <c:otherwise>
-                                            <c:if test="${role == 'student'}"><p style="margin-top: 30px;">Ви вже відправили свою відповідь</p></c:if>
+                                            <c:if test="${role == 'student'}">
+                                                <p style="margin-top: 30px;">Ви вже відправили свою відповідь</p>
+                                                <p>${mark}</p>
+                                            </c:if>
                                         </c:otherwise>
                                     </c:choose>
                                     <div class="popup_window">
@@ -135,6 +138,10 @@
                                     "data": {
                                         "userId": Number(studentId),
                                         "mark": Number(mark.value)
+                                    },
+                                    "success": function(response) {
+                                        alert("Оцінка успішно виставлена: " + response);
+                                        window.location.reload();
                                     }
                                 };
 

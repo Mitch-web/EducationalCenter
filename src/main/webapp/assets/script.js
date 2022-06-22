@@ -50,7 +50,6 @@
             if (deleteBut.value != 0) {
                 var removeUrl = window.location.href;
                 removeUrl = removeUrl.replace("#", "") + "/posts/" + `${remove_post_input.value}` + "/remove";
-                alert(removeUrl);
                 var settings = {
                     "url": removeUrl,
                     "method": "POST",
@@ -59,6 +58,7 @@
                         "Content-Type": "application/x-www-form-urlencoded"
                     },
                     "success": function(response) {
+                        alert("Завдання успішно видалене");
                         window.location.reload();
                     },
                     error: function(response) {
