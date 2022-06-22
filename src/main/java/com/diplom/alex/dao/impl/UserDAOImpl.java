@@ -75,9 +75,10 @@ public class UserDAOImpl implements UserDAO {
             return ps;
         }, keyHolder);
 
-        jdbcTemplate.batchUpdate("INSERT INTO " + COURSES_HAVE_USERS_TABLE + " VALUES(" + keyHolder.getKey() + "," + coursesIds[0],
-                "INSERT INTO " + COURSES_HAVE_USERS_TABLE + " VALUES(" + keyHolder.getKey() + "," + coursesIds[1],
-                "INSERT INTO " + COURSES_HAVE_USERS_TABLE + " VALUES(" + keyHolder.getKey() + "," + coursesIds[2]);
+        String updateSql = "INSERT INTO " + COURSES_HAVE_USERS_TABLE + " VALUES(?,?)";
+        for (int courseId : coursesIds) {
+            jdbcTemplate.update(updateSql, keyHolder.getKey(), courseId);
+        }
     }
 
     @Override
