@@ -18,5 +18,6 @@ public class UserMarkingModel {
     private byte[] content;
     private String stringContent = "";
     private int mark;
+    private String comment;
 
 }

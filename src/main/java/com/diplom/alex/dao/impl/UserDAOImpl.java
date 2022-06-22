@@ -42,7 +42,7 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public List<UserMarkingModel> getByPostId(int postId) {
-        String selectQuery = "SELECT u.id, g.name, u.first_name, u.last_name,  h.file_name, h.content_type, h.content, uhp.mark FROM " + USERS_HAVE_POSTS_TABLE +
+        String selectQuery = "SELECT u.id, g.name, u.first_name, u.last_name,  h.file_name, h.content_type, h.content, uhp.mark, uhp.comment FROM " + USERS_HAVE_POSTS_TABLE +
                 " AS uhp JOIN " + USER_TABLE + " AS u ON uhp.user_id=u.id JOIN " + HOMEWORKS_TABLE +
                 " AS h ON uhp.homework_id=h.id JOIN " + GROUPS_TABLE + " AS g ON u.group_id=g.id " +
                 " WHERE uhp.post_id=?";

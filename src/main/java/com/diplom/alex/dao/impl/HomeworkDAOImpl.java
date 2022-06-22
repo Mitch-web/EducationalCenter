@@ -56,10 +56,10 @@ public class HomeworkDAOImpl implements HomeworkDAO {
     }
 
     @Override
-    public boolean updateWithMark(int postId, int userId, int mark) {
+    public boolean updateWithMark(int postId, int userId, int mark, String comment) {
         try {
-            jdbcTemplate.update("UPDATE " + USERS_HAVE_POSTS_TABLE + " SET mark=? WHERE post_id=? AND user_id=?",
-                    mark, postId, userId);
+            jdbcTemplate.update("UPDATE " + USERS_HAVE_POSTS_TABLE + " SET mark=?, comment=? WHERE post_id=? AND user_id=?",
+                    mark, comment, postId, userId);
         } catch (SQLWarningException e) {
             return false;
         }

@@ -30,7 +30,7 @@ public class HomeworkServiceImpl implements HomeworkService {
     }
 
     @Override
-    public boolean updateWithMark(int postId, int userId, int mark) {
-        return homeworkDAO.updateWithMark(postId, userId, mark);
+    public boolean updateWithMark(int postId, int userId, int mark, String comment) {
+        return homeworkDAO.updateWithMark(postId, userId, mark, comment);
     }
 }

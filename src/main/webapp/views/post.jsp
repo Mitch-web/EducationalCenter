@@ -38,6 +38,7 @@
                                             <c:if test="${role == 'student'}">
                                                 <p style="margin-top: 30px;">Ви вже відправили свою відповідь</p>
                                                 <p>${mark}</p>
+                                                <p>${comment}</p>
                                             </c:if>
                                         </c:otherwise>
                                     </c:choose>
@@ -59,6 +60,7 @@
                                                         <p>ПІБ</p>
                                                         <p>Завдання</p>
                                                         <p>Оцінка</p>
+                                                        <p>Коментар</p>
                                                     </li>
                                                     <c:forEach var="userMarking" items="${userMarkings}">
                                                         <li class="marks_list_elems" data-id="${userMarking.id}">
@@ -68,10 +70,14 @@
                                                             <c:choose>
                                                                 <c:when test="${userMarking.mark != -1}">
                                                                     <p>${userMarking.mark}</p>
+                                                                    <p style="margin-left: 30px;">${userMarking.comment}</p>
                                                                 </c:when>
                                                                 <c:otherwise>
                                                                     <div class="mark_value">
-                                                                        <input type="number">
+                                                                        <input type="number" style="width:50px;">
+                                                                    </div>
+                                                                    <div class="mark_comment">
+                                                                        <input type="text" placeholder="Коментар" style="width: 100px;"/>
                                                                     </div>
                                                                     <div class="check_mark_btn">
                                                                         <button>Оцінити</button>
@@ -121,6 +127,7 @@
                         let studentId = work_container.getAttribute('data-id');
                         let estimate_but = work_container.querySelector('.check_mark_btn button');
                         let mark = work_container.querySelector('.mark_value input');
+                        let comment = work_container.querySelector('.mark_comment input');
                         let current_url = window.location.href;
                         estimate_but.addEventListener('click', function() {
                             if (mark.value == '') {
@@ -137,7 +144,8 @@
                                     },
                                     "data": {
                                         "userId": Number(studentId),
-                                        "mark": Number(mark.value)
+                                        "mark": Number(mark.value),
+                                        "comment": comment.value
                                     },
                                     "success": function(response) {
                                         alert("Оцінка успішно виставлена: " + response);

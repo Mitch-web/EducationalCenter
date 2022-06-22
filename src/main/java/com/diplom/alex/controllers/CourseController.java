@@ -73,6 +73,11 @@ public class CourseController {
                 if (userMarking.isPresent()) {
                     if (userMarking.get().getMark() != -1) {
                         maw.addObject("mark", "Ваша оцінка: " + userMarking.get().getMark());
+                        if (null != userMarking.get().getComment() && !"".equals(userMarking.get().getComment())) {
+                            maw.addObject("comment", "Відгук: " + userMarking.get().getComment());
+                        } else {
+                            maw.addObject("comment", "Без коментарів");
+                        }
                     } else {
                         maw.addObject("mark", "Очікуйте на оцінку");
                     }
@@ -90,8 +95,8 @@ public class CourseController {
     }
 
     @PostMapping("/{courseId}/posts/{id}")
-    public ResponseEntity<Object> postMark(@PathVariable("id") int id, int userId, int mark) {
-        return homeworkService.updateWithMark(id, userId, mark)
+    public ResponseEntity<Object> postMark(@PathVariable("id") int id, int userId, int mark, String comment) {
+        return homeworkService.updateWithMark(id, userId, mark, comment)
                 ? ResponseEntity.ok().body(mark)
                 : ResponseEntity.badRequest().body("Виникла помилка в процесі виконання запиту");
     }
